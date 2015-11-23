@@ -1,0 +1,301 @@
+using Grid
+
+type Experiment
+
+  model_index::Int
+  interpolated_measurement_array::Array{Float64,1}
+  raw_measurment_array::Array{Float64,2}
+
+  function Experiment()
+    this = new ()
+  end
+end
+
+function interpolate_experimental_data(data_array,time_vector)
+
+  # How many data points do we have?
+  number_of_data_points = length(data_array);
+  max_time_value = maximum(time_vector);
+  min_time_value = minimum(time_vector);
+
+  yi = InterpGrid(data_array, 0.0, InterpQuadratic);
+  interp_value_array = Float64[]
+  for time_value in time_vector
+
+    # rescale time -
+    index = (number_of_data_points - 1)*(time_value - min_time_value)/(max_time_value - min_time_value)+1;
+    push!(interp_value_array,abs(yi[index]));
+  end
+
+  return interp_value_array;
+end
+
+function ExperimentDataDictionary(tStart,tStop,tStep)
+# ================================================================
+data_dictionary = Dict{String,Experiment}();
+
+# timescale -
+TSIM = [tStart:tStep:tStop];
+
+# Glucose -
+glucose_measurment = Experiment()
+glucose_measurment.model_index = 47;
+glucose_measurment.raw_measurment_array = float(open(readdlm,"./data/Glucose.dat"));
+glucose_measurment.interpolated_measurement_array = interpolate_experimental_data(glucose_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_glc_D_c"] = glucose_measurment;
+
+# CAT -
+cat_measurment = Experiment()
+cat_measurment.model_index = 85;
+cat_measurment.raw_measurment_array = float(open(readdlm,"./data/CAT.dat"));
+cat_measurment.interpolated_measurement_array = interpolate_experimental_data(cat_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["CAT"] = cat_measurment;
+
+# ATP -
+atp_measurment = Experiment()
+atp_measurment.model_index = 53;
+atp_measurment.raw_measurment_array = float(open(readdlm,"./data/ATP.dat"));
+atp_measurment.interpolated_measurement_array = interpolate_experimental_data(atp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_atp_c"] = atp_measurment;
+
+# ADP -
+adp_measurment = Experiment()
+adp_measurment.model_index = 54;
+adp_measurment.raw_measurment_array = float(open(readdlm,"./data/ADP.dat"));
+adp_measurment.interpolated_measurement_array = interpolate_experimental_data(adp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_adp_c"] = adp_measurment;
+
+# AMP -
+amp_measurment = Experiment()
+amp_measurment.model_index = 55;
+amp_measurment.raw_measurment_array = float(open(readdlm,"./data/AMP.dat"));
+amp_measurment.interpolated_measurement_array = interpolate_experimental_data(amp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_amp_c"] = amp_measurment;
+
+# CTP -
+ctp_measurment = Experiment()
+ctp_measurment.model_index = 62;
+ctp_measurment.raw_measurment_array = float(open(readdlm,"./data/CTP.dat"));
+ctp_measurment.interpolated_measurement_array = interpolate_experimental_data(ctp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_ctp_c"] = ctp_measurment;
+
+# CDP -
+cdp_measurment = Experiment()
+cdp_measurment.model_index = 63;
+cdp_measurment.raw_measurment_array = float(open(readdlm,"./data/CDP.dat"));
+cdp_measurment.interpolated_measurement_array = interpolate_experimental_data(cdp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_cdp_c"] = cdp_measurment;
+
+# CMP -
+cmp_measurment = Experiment()
+cmp_measurment.model_index = 64;
+cmp_measurment.raw_measurment_array = float(open(readdlm,"./data/CMP.dat"));
+cmp_measurment.interpolated_measurement_array = interpolate_experimental_data(cmp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_cmp_c"] = cmp_measurment;
+
+# GTP -
+gtp_measurment = Experiment()
+gtp_measurment.model_index = 56;
+gtp_measurment.raw_measurment_array = float(open(readdlm,"./data/GTP.dat"));
+gtp_measurment.interpolated_measurement_array = interpolate_experimental_data(gtp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_gtp_c"] = gtp_measurment;
+
+# GDP -
+gdp_measurment = Experiment()
+gdp_measurment.model_index = 57;
+gdp_measurment.raw_measurment_array = float(open(readdlm,"./data/GDP.dat"));
+gdp_measurment.interpolated_measurement_array = interpolate_experimental_data(gdp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_gdp_c"] = gdp_measurment;
+
+# GMP -
+gmp_measurment = Experiment()
+gmp_measurment.model_index = 58;
+gmp_measurment.raw_measurment_array = float(open(readdlm,"./data/GMP.dat"));
+gmp_measurment.interpolated_measurement_array = interpolate_experimental_data(gmp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_gmp_c"] = gmp_measurment;
+
+# UTP -
+utp_measurment = Experiment()
+utp_measurment.model_index = 59;
+utp_measurment.raw_measurment_array = float(open(readdlm,"./data/UTP.dat"));
+utp_measurment.interpolated_measurement_array = interpolate_experimental_data(utp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_utp_c"] = utp_measurment;
+
+# UDP -
+udp_measurment = Experiment()
+udp_measurment.model_index = 60;
+udp_measurment.raw_measurment_array = float(open(readdlm,"./data/UDP.dat"));
+udp_measurment.interpolated_measurement_array = interpolate_experimental_data(udp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_udp_c"] = udp_measurment;
+
+# UMP -
+ump_measurment = Experiment()
+ump_measurment.model_index = 61;
+ump_measurment.raw_measurment_array = float(open(readdlm,"./data/UMP.dat"));
+ump_measurment.interpolated_measurement_array = interpolate_experimental_data(ump_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_ump_c"] = ump_measurment;
+
+# Lactate -
+lactate_measurment = Experiment()
+lactate_measurment.model_index = 51;
+lactate_measurment.raw_measurment_array = float(open(readdlm,"./data/Lactate.dat"));
+lactate_measurment.interpolated_measurement_array = interpolate_experimental_data(lactate_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_lac_D_c"] = lactate_measurment;
+
+# Acetate -
+acetate_measurment = Experiment()
+acetate_measurment.model_index = 50;
+acetate_measurment.raw_measurment_array = float(open(readdlm,"./data/Acetate.dat"));
+acetate_measurment.interpolated_measurement_array = interpolate_experimental_data(acetate_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_ac_c"] = acetate_measurment;
+
+# Pyruvate -
+pyr_measurment = Experiment()
+pyr_measurment.model_index = 49;
+pyr_measurment.raw_measurment_array = float(open(readdlm,"./data/Pyruvate.dat"));
+pyr_measurment.interpolated_measurement_array = interpolate_experimental_data(pyr_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_pyr_c"] = pyr_measurment;
+
+# Succinate -
+succinate_measurment = Experiment()
+succinate_measurment.model_index = 65;
+succinate_measurment.raw_measurment_array = float(open(readdlm,"./data/Succinate.dat"));
+succinate_measurment.interpolated_measurement_array = interpolate_experimental_data(succinate_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_succ_c"] = succinate_measurment;
+
+# Malate -
+malate_measurment = Experiment()
+malate_measurment.model_index = 52;
+malate_measurment.raw_measurment_array = float(open(readdlm,"./data/Malate.dat"));
+malate_measurment.interpolated_measurement_array = interpolate_experimental_data(malate_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_mal_L_c"] = malate_measurment;
+
+# Asp -
+asp_measurment = Experiment()
+asp_measurment.model_index = 66;
+asp_measurment.raw_measurment_array = float(open(readdlm,"./data/Asp.dat"));
+asp_measurment.interpolated_measurement_array = interpolate_experimental_data(asp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_asp_L_c"] = asp_measurment;
+
+# Gly -
+gly_measurment = Experiment()
+gly_measurment.model_index = 67;
+gly_measurment.raw_measurment_array = float(open(readdlm,"./data/Gly.dat"));
+gly_measurment.interpolated_measurement_array = interpolate_experimental_data(gly_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_gly_L_c"] = gly_measurment;
+
+# Ile -
+ile_measurment = Experiment()
+ile_measurment.model_index = 68;
+ile_measurment.raw_measurment_array = float(open(readdlm,"./data/Ile.dat"));
+ile_measurment.interpolated_measurement_array = interpolate_experimental_data(ile_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_ile_L_c"] = ile_measurment;
+
+# Asn -
+asn_measurment = Experiment()
+asn_measurment.model_index = 69;
+asn_measurment.raw_measurment_array = float(open(readdlm,"./data/Asn.dat"));
+asn_measurment.interpolated_measurement_array = interpolate_experimental_data(asn_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_asn_L_c"] = asn_measurment;
+
+# Cys -
+cys_measurment = Experiment()
+cys_measurment.model_index = 70;
+cys_measurment.raw_measurment_array = float(open(readdlm,"./data/Cys.dat"));
+cys_measurment.interpolated_measurement_array = interpolate_experimental_data(cys_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_cys_L_c"] = cys_measurment;
+
+# Lys -
+lys_measurment = Experiment()
+lys_measurment.model_index = 71;
+lys_measurment.raw_measurment_array = float(open(readdlm,"./data/Lys.dat"));
+lys_measurment.interpolated_measurement_array = interpolate_experimental_data(lys_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_lys_L_c"] = lys_measurment;
+
+# His -
+his_measurment = Experiment()
+his_measurment.model_index = 72;
+his_measurment.raw_measurment_array = float(open(readdlm,"./data/His.dat"));
+his_measurment.interpolated_measurement_array = interpolate_experimental_data(his_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_his_L_c"] = his_measurment;
+
+# Ala -
+ala_measurment = Experiment()
+ala_measurment.model_index = 73;
+ala_measurment.raw_measurment_array = float(open(readdlm,"./data/Ala.dat"));
+ala_measurment.interpolated_measurement_array = interpolate_experimental_data(ala_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_ala_L_c"] = ala_measurment;
+
+# Gln -
+gln_measurment = Experiment()
+gln_measurment.model_index = 84;
+gln_measurment.raw_measurment_array = float(open(readdlm,"./data/Gln.dat"));
+gln_measurment.interpolated_measurement_array = interpolate_experimental_data(gln_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_gln_L_c"] = gln_measurment;
+
+# Phe -
+phe_measurment = Experiment()
+phe_measurment.model_index = 74;
+phe_measurment.raw_measurment_array = float(open(readdlm,"./data/Phe.dat"));
+phe_measurment.interpolated_measurement_array = interpolate_experimental_data(phe_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_phe_L_c"] = phe_measurment;
+
+# Pro -
+pro_measurment = Experiment()
+pro_measurment.model_index = 75;
+pro_measurment.raw_measurment_array = float(open(readdlm,"./data/Pro.dat"));
+pro_measurment.interpolated_measurement_array = interpolate_experimental_data(pro_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_pro_L_c"] = pro_measurment;
+
+# Ser -
+ser_measurment = Experiment()
+ser_measurment.model_index = 76;
+ser_measurment.raw_measurment_array = float(open(readdlm,"./data/Ser.dat"));
+ser_measurment.interpolated_measurement_array = interpolate_experimental_data(ser_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_ser_L_c"] = ser_measurment;
+
+# Thr -
+thr_measurment = Experiment()
+thr_measurment.model_index = 77;
+thr_measurment.raw_measurment_array = float(open(readdlm,"./data/Thr.dat"));
+thr_measurment.interpolated_measurement_array = interpolate_experimental_data(thr_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_thr_L_c"] = thr_measurment;
+
+# Trp -
+trp_measurment = Experiment()
+trp_measurment.model_index = 78;
+trp_measurment.raw_measurment_array = float(open(readdlm,"./data/Trp.dat"));
+trp_measurment.interpolated_measurement_array = interpolate_experimental_data(trp_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_trp_L_c"] = trp_measurment;
+
+# Tyr -
+tyr_measurment = Experiment()
+tyr_measurment.model_index = 79;
+tyr_measurment.raw_measurment_array = float(open(readdlm,"./data/Tyr.dat"));
+tyr_measurment.interpolated_measurement_array = interpolate_experimental_data(tyr_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_tyr_L_c"] = tyr_measurment;
+
+# Val -
+val_measurment = Experiment()
+val_measurment.model_index = 80;
+val_measurment.raw_measurment_array = float(open(readdlm,"./data/Val.dat"));
+val_measurment.interpolated_measurement_array = interpolate_experimental_data(val_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_val_L_c"] = val_measurment;
+
+# Met -
+met_measurment = Experiment()
+met_measurment.model_index = 81;
+met_measurment.raw_measurment_array = float(open(readdlm,"./data/Met.dat"));
+met_measurment.interpolated_measurement_array = interpolate_experimental_data(met_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_met_L_c"] = met_measurment;
+
+# Leu -
+leu_measurment = Experiment()
+leu_measurment.model_index = 82;
+leu_measurment.raw_measurment_array = float(open(readdlm,"./data/Leu.dat"));
+leu_measurment.interpolated_measurement_array = interpolate_experimental_data(leu_measurment.raw_measurment_array[:,2],TSIM);
+data_dictionary["M_leu_L_c"] = leu_measurment;
+# ================================================================
+
+return data_dictionary;
+end

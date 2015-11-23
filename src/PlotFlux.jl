@@ -1,0 +1,35 @@
+using PyPlot
+include("FluxNames.jl")
+
+num_dir = convert(Int64,readcsv("./rate_vector/num_dir")[1])
+num_files = convert(Int64,readcsv("./rate_vector/$num_dir/num_files")[1])
+
+flux_array = readcsv("./rate_vector/$num_dir/1")[:,1]
+files = 2:num_files
+for file in files
+    flux = readcsv("./rate_vector/$num_dir/$file")[:,1]
+    flux_array = [flux_array flux]
+end
+
+Tsim = vec(flux_array[1,:])
+flux_array = flux_array[2:end,:]
+
+flux_names = FluxNames()
+#fluxes = [2 8 17 23 26 49 64 65 79 80 82 83 84 85 87 88 89 91 93 94 95 96 100 102 103 107 109 112 113 115 117 118 126]
+#fluxes = [50 112 113] # fluxes that consumes M_succoa_c
+#fluxes = [[1;"produces"] [22;"produces"] [25;"consumes"] [26;"consumes"] [42;"produces"] [59;"produces"] [60;"produces"] [68;"consumes"] [69;"produces"] [70;"consumes"] [99;"consumes"] [110;"consumes"] [111;"consumes 2 units"] [112;"consumes"] [113;"produces"] [118;"produces"] [120;"consumes 2 units"]] # fluxes that affect M_pyr_c
+#fluxes = [[68;"consumes"] [69;"consumes"]]
+#fluxes = [[1;"consumes"] [20;"produces"] [21;"consumes"] [22;"consumes"] [23;"produces"] [24;"consumes"] [26;"produces"] [82;"consumes"]] # fluxes that affect M_pep_c
+#fluxes = [[1;""] [2;""] [3;""] [4;""] [5;""] [68;""] [69;""]]
+#fluxes = [[2;"produces"] [3;"produces"] [4;"produces"] [5;"produces"] [8;"produces"] [14;"produces"] [15;"consumes"] [22;"consumes"] [24;"produces"] [26;"produces 2 units"] [27;"produces"] [28;"consumes"] [29;"produces"] [43;"produces"] [55;"produces"] [56;"consumes"] [58;"produces"] [66;"consumes 2 units"] [67;"produces 2 units"] [68;"consumes"] [69;"produces"] [71;"consumes 2 units"] [72;"consumes 2 units"] [73;"produces 3 units"] [74;"consumes 3 units"] [76;"produces 2 units"] [77;"consumes"] [78;"consumes"] [79;"produces"] [81;"produces"] [83;"produces 2 units"] [84;"produces 3 units"] [85;"produces 2 units"] [87;"produces 3 units"] [90;"produces 2 units"] [93;"produces 2 units"] [96;"produces 2 units"] [97;"produces"] [98;"produces"] [100;"produces 5 units"] [102;"produces"] [103;"produces"] [104;"produces"] [105;"consumes"] [106;"consumes"] [107;"produces"] [109;"produces 6 units"] [110;"consumes 2 units"] [111;"consumes"] [112;"consumes 2 units"] [114;"consumes"] [115;"consumes 2 units"] [116;"produces"] [117;"consumes"] [118;"produces"] [120;"consumes 2 units"] [127;"consumes 4 units"] [128;"consumes 6 units"] [129;"consumes 4 units"] [130;"consumes 6 units"] [131;"consumes 4 units"] [132;"consumes 6 units"] [133;"consumes 4 units"] [134;"consumes 6 units"]]
+#fluxes = [[2;"consumes"] [8;"consumes"] [16;"produces"] [17;"consumes"] [22;"produces"] [23;"consumes"] [26;"consumes"] [49;"consumes"] [50;"produces"] [63;"produces"] [64;"consumes"] [65;"consumes"] [73;"produces"] [79;"consumes"] [80;"consumes"] [82;"consumes"] [83;"consumes 2 units"] [84;"consumes 2 units"] [85;"consumes 2 units"] [87;"consumes"] [88;"consumes"] [89;"consumes"] [91;"consumes"] [92;"produces"] [93;"consumes 3 units"] [94;"consumes"] [95;"consumes"] [96;"consumes"] [100;"consumes 4 units"] [102;"consumes"] [103;"consumes"] [107;"consumes"] [109;"consumes 3 units"] [112;"consumes"] [113;"consumes"] [115;"consumes"] [117;"consumes 2 units"] [118;"consumes 2 units"] [126;"consumes 219 units"]]
+fluxes = [[127;"amp-->atp"] [128;"amp-->atp"] [129;"gmp-->gtp"] [130;"gmp-->gtp"] [131;"cmp-->ctp"] [132;"cmp-->ctp"] [133;"ump-->utp"] [134;"ump-->utp"]]
+i_range = 1:size(fluxes)[2]
+for i in i_range
+#    if fluxes[2,i] == "produces"
+    flux = fluxes[1,i]
+    figure(figsize=(5.5,3.4))
+    suptitle("$flux: "*flux_names[flux]*", "*fluxes[2,i])
+    plot(Tsim,vec(flux_array[flux,:]))
+#    end
+end
