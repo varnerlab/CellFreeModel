@@ -1,5 +1,3 @@
-include("ExperimentDataDictionary.jl");
-
 # ----------------------------------------------------------------------------------- #
 # Copyright (c) 2015 Varnerlab
 # School of Chemical Engineering Purdue University
@@ -30,7 +28,7 @@ function DataFile(TSTART,TSTOP,Ts)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 11-23-2015 12:43:28
+# Generation timestamp: 12-07-2015 16:42:54
 # 
 # Input arguments: 
 # TSTART  - Time start 
@@ -42,11 +40,8 @@ function DataFile(TSTART,TSTOP,Ts)
 # ----------------------------------------------------------------------------------- #
 
 # Load the stoichiometric matrix - 
-S = float(open(readdlm,"/home/nicholas/code/KwateeNov23/network/Network.dat"));
+S = float(open(readdlm,"/home/nicholas/code/KwateeGitHubDec7/network/Network.dat"));
 (NSPECIES,NREACTIONS) = size(S);
-
-# Load experimental data file -
-experimental_data_dictionary = ExperimentDataDictionary(TSTART,TSTOP,Ts);
 
 # Formulate the initial condition array - 
 initial_condition_array = Float64[];
@@ -378,7 +373,7 @@ push!(rate_constant_array,0.0)	#	92	 R_adk_R: 2*M_adp_c = M_amp_c+M_atp_c
 push!(rate_constant_array,0.0)	#	93	 R_ump: M_gln_L_c+M_asp_L_c+M_r5p_c+M_q8_c+3*M_atp_c+M_hco3_c = M_ump_c+M_glu_L_c+M_q8h2_c+2*M_h_c+2*M_adp_c+M_amp_c+2*M_pi_c+M_ppi_c+M_co2_c
 push!(rate_constant_array,0.0)	#	94	 R_udp: M_ump_c+M_atp_c = M_udp_c+M_adp_c
 push!(rate_constant_array,0.0)	#	95	 R_utp: M_udp_c+M_atp_c = M_utp_c+M_adp_c
-push!(rate_constant_array,0.0)	#	96	 R_ctp: M_utp_c+M_glu_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+2*M_h_c
+push!(rate_constant_array,0.0)	#	96	 R_ctp: M_utp_c+M_gln_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+3*M_h_c
 push!(rate_constant_array,0.0)	#	97	 R_cdp: M_ctp_c+M_h2o_c = M_cdp_c+M_pi_c+M_h_c
 push!(rate_constant_array,0.0)	#	98	 R_cmp: M_cdp_c+M_h2o_c = M_cmp_c+M_pi_c+M_h_c
 push!(rate_constant_array,0.0)	#	99	 R_alaAC: M_pyr_c+M_glu_L_c = M_ala_L_c+M_akg_c
@@ -768,10 +763,10 @@ saturation_constant_array[94,61] = 1.0;	#	 Name: R_udp: M_ump_c+M_atp_c = M_udp_
 saturation_constant_array[94,53] = 1.0;	#	 Name: R_udp: M_ump_c+M_atp_c = M_udp_c+M_adp_c Species: M_atp_c
 saturation_constant_array[95,60] = 1.0;	#	 Name: R_utp: M_udp_c+M_atp_c = M_utp_c+M_adp_c Species: M_udp_c
 saturation_constant_array[95,53] = 1.0;	#	 Name: R_utp: M_udp_c+M_atp_c = M_utp_c+M_adp_c Species: M_atp_c
-saturation_constant_array[96,59] = 1.0;	#	 Name: R_ctp: M_utp_c+M_glu_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+2*M_h_c Species: M_utp_c
-saturation_constant_array[96,83] = 1.0;	#	 Name: R_ctp: M_utp_c+M_glu_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+2*M_h_c Species: M_glu_L_c
-saturation_constant_array[96,53] = 1.0;	#	 Name: R_ctp: M_utp_c+M_glu_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+2*M_h_c Species: M_atp_c
-saturation_constant_array[96,92] = 1.0;	#	 Name: R_ctp: M_utp_c+M_glu_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+2*M_h_c Species: M_h2o_c
+saturation_constant_array[96,59] = 1.0;	#	 Name: R_ctp: M_utp_c+M_gln_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+3*M_h_c Species: M_utp_c
+saturation_constant_array[96,84] = 1.0;	#	 Name: R_ctp: M_utp_c+M_gln_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+3*M_h_c Species: M_gln_L_c
+saturation_constant_array[96,53] = 1.0;	#	 Name: R_ctp: M_utp_c+M_gln_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+3*M_h_c Species: M_atp_c
+saturation_constant_array[96,92] = 1.0;	#	 Name: R_ctp: M_utp_c+M_gln_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+3*M_h_c Species: M_h2o_c
 saturation_constant_array[97,62] = 1.0;	#	 Name: R_cdp: M_ctp_c+M_h2o_c = M_cdp_c+M_pi_c+M_h_c Species: M_ctp_c
 saturation_constant_array[97,92] = 1.0;	#	 Name: R_cdp: M_ctp_c+M_h2o_c = M_cdp_c+M_pi_c+M_h_c Species: M_h2o_c
 saturation_constant_array[98,63] = 1.0;	#	 Name: R_cmp: M_cdp_c+M_h2o_c = M_cmp_c+M_pi_c+M_h_c Species: M_cdp_c
@@ -958,7 +953,6 @@ data_dictionary["RATE_CONSTANT_ARRAY"] = rate_constant_array;
 data_dictionary["SATURATION_CONSTANT_ARRAY"] = saturation_constant_array;
 data_dictionary["INITIAL_CONDITION_ARRAY"] = initial_condition_array;
 data_dictionary["CONTROL_PARAMETER_ARRAY"] = control_parameter_array;
-data_dictionary["EXPERIMENT_DATA_DICTIONARY"] = experimental_data_dictionary;
 # ----------------------------------------------------------------------------------- #
 return data_dictionary;
 end

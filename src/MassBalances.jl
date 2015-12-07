@@ -30,7 +30,7 @@ function MassBalances(t,x,dxdt_vector,data_dictionary)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 11-23-2015 12:43:28
+# Generation timestamp: 12-07-2015 16:42:54
 # 
 # Arguments: 
 # t  - current time 
@@ -48,16 +48,6 @@ x[idx] = 0.0;
 
 # Call the control function - 
 (rate_vector) = Control(t,x,rate_vector,data_dictionary);
-
-num_dir = convert(Int64,readcsv("./rate_vector/num_dir")[1])
-
-num_files = 0
-if isfile("./rate_vector/$num_dir/num_files")
-    num_files = convert(Int64,readcsv("./rate_vector/$num_dir/num_files")[1])
-end
-num_files += 1
-writecsv("./rate_vector/$num_dir/$num_files",[t,rate_vector])
-writecsv("./rate_vector/$num_dir/num_files",num_files)
 
 # Encode the balance equations as a matrix vector product - 
 const S = data_dictionary["STOICHIOMETRIC_MATRIX"];

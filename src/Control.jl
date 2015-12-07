@@ -27,7 +27,7 @@ function Control(t,x,rate_vector,data_dictionary)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 11-23-2015 12:43:28
+# Generation timestamp: 12-07-2015 16:42:54
 # 
 # Arguments: 
 # t  - current time 

@@ -27,7 +27,7 @@ function Kinetics(t,x,data_dictionary)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 11-23-2015 12:43:28
+# Generation timestamp: 12-07-2015 16:42:54
 # 
 # Input arguments: 
 # t  - current time 
@@ -750,8 +750,8 @@ tmp_reaction = rate_constant_array[95]*(E_R_utp)*(M_udp_c/(saturation_constant_a
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
-# R_ctp: M_utp_c+M_glu_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+2*M_h_c
-tmp_reaction = rate_constant_array[96]*(E_R_ctp)*(M_utp_c/(saturation_constant_array[96,59] + M_utp_c))*(M_glu_L_c/(saturation_constant_array[96,83] + M_glu_L_c))*(M_atp_c/(saturation_constant_array[96,53] + M_atp_c))*(M_h2o_c/(saturation_constant_array[96,92] + M_h2o_c));
+# R_ctp: M_utp_c+M_gln_L_c+M_atp_c+M_h2o_c = M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+3*M_h_c
+tmp_reaction = rate_constant_array[96]*(E_R_ctp)*(M_utp_c/(saturation_constant_array[96,59] + M_utp_c))*(M_gln_L_c/(saturation_constant_array[96,84] + M_gln_L_c))*(M_atp_c/(saturation_constant_array[96,53] + M_atp_c))*(M_h2o_c/(saturation_constant_array[96,92] + M_h2o_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 

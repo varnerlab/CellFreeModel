@@ -193,7 +193,7 @@ R_ump,M_gln_L_c+M_asp_L_c+M_r5p_c+M_q8_c+3*M_atp_c+M_hco3_c,M_ump_c+M_glu_L_c+M_
 R_udp,M_ump_c+M_atp_c,M_udp_c+M_adp_c,0,inf;
 R_utp,M_udp_c+M_atp_c,M_utp_c+M_adp_c,0,inf;
 // Cytidine
-R_ctp,M_utp_c+M_glu_L_c+M_atp_c+M_h2o_c,M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+2*M_h_c,0,inf;
+R_ctp,M_utp_c+M_gln_L_c+M_atp_c+M_h2o_c,M_ctp_c+M_glu_L_c+M_adp_c+M_pi_c+3*M_h_c,0,inf;
 R_cdp,M_ctp_c+M_h2o_c,M_cdp_c+M_pi_c+M_h_c,0,inf;
 R_cmp,M_cdp_c+M_h2o_c,M_cmp_c+M_pi_c+M_h_c,0,inf;
 

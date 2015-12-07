@@ -307,6 +307,12 @@ R_CAT,15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L
 // ===============================================
 R_amp_ppi,M_amp_c+M_ppi_c+4*M_h_c,M_atp_c+M_h2o_c,0,inf
 R_amp_pi,M_amp_c+2*M_pi_c+6*M_h_c,M_atp_c+2*M_h2o_c,0,inf
+R_gmp_ppi,M_gmp_c+M_ppi_c+4*M_h_c,M_gtp_c+M_h2o_c,0,inf
+R_gmp_pi,M_gmp_c+2*M_pi_c+6*M_h_c,M_gtp_c+2*M_h2o_c,0,inf
+R_cmp_ppi,M_cmp_c+M_ppi_c+4*M_h_c,M_ctp_c+M_h2o_c,0,inf
+R_cmp_pi,M_cmp_c+2*M_pi_c+6*M_h_c,M_ctp_c+2*M_h2o_c,0,inf
+R_ump_ppi,M_ump_c+M_ppi_c+4*M_h_c,M_utp_c+M_h2o_c,0,inf
+R_ump_pi,M_ump_c+2*M_pi_c+6*M_h_c,M_utp_c+2*M_h2o_c,0,inf
 
 [kwatee.allosteric.control.handler]
 INHIBITION_1,M_pep_c,R_pfk,inhibition;
