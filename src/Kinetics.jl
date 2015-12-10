@@ -27,7 +27,7 @@ function Kinetics(t,x,data_dictionary)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 12-07-2015 16:42:54
+# Generation timestamp: 12-09-2015 20:14:40
 # 
 # Input arguments: 
 # t  - current time 
@@ -685,8 +685,8 @@ tmp_reaction = rate_constant_array[82]*(E_R_chor)*(M_e4p_c/(saturation_constant_
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
-# R_gar: M_r5p_c+M_glu_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+2*M_h_c
-tmp_reaction = rate_constant_array[83]*(E_R_gar)*(M_r5p_c/(saturation_constant_array[83,16] + M_r5p_c))*(M_glu_L_c/(saturation_constant_array[83,83] + M_glu_L_c))*(M_gly_L_c/(saturation_constant_array[83,67] + M_gly_L_c))*(M_atp_c/(saturation_constant_array[83,53] + M_atp_c))*(M_h2o_c/(saturation_constant_array[83,92] + M_h2o_c));
+# R_gar: M_r5p_c+M_gln_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+7*M_h_c
+tmp_reaction = rate_constant_array[83]*(E_R_gar)*(M_r5p_c/(saturation_constant_array[83,16] + M_r5p_c))*(M_gln_L_c/(saturation_constant_array[83,84] + M_gln_L_c))*(M_gly_L_c/(saturation_constant_array[83,67] + M_gly_L_c))*(M_atp_c/(saturation_constant_array[83,53] + M_atp_c))*(M_h2o_c/(saturation_constant_array[83,92] + M_h2o_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 

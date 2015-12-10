@@ -28,7 +28,7 @@ function DataFile(TSTART,TSTOP,Ts)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 12-07-2015 16:42:54
+# Generation timestamp: 12-09-2015 20:14:40
 # 
 # Input arguments: 
 # TSTART  - Time start 
@@ -40,7 +40,7 @@ function DataFile(TSTART,TSTOP,Ts)
 # ----------------------------------------------------------------------------------- #
 
 # Load the stoichiometric matrix - 
-S = float(open(readdlm,"/home/nicholas/code/KwateeGitHubDec7/network/Network.dat"));
+S = float(open(readdlm,"/home/nicholas/code/KwateeGitHubDec9/network/Network.dat"));
 (NSPECIES,NREACTIONS) = size(S);
 
 # Formulate the initial condition array - 
@@ -360,7 +360,7 @@ push!(rate_constant_array,0.0)	#	79	 R_hack1: M_atp_c+M_h2o_c = M_adp_c+M_h_c+M_
 push!(rate_constant_array,0.0)	#	80	 R_ppk: M_atp_c+M_pi_c = M_adp_c+M_ppi_c
 push!(rate_constant_array,0.0)	#	81	 R_ppa: M_ppi_c+M_h2o_c = 2*M_pi_c+M_h_c
 push!(rate_constant_array,0.0)	#	82	 R_chor: M_e4p_c+2*M_pep_c+M_nadph_c+M_atp_c = M_chor_c+M_nadp_c+M_adp_c+4*M_pi_c
-push!(rate_constant_array,0.0)	#	83	 R_gar: M_r5p_c+M_glu_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+2*M_h_c
+push!(rate_constant_array,0.0)	#	83	 R_gar: M_r5p_c+M_gln_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+7*M_h_c
 push!(rate_constant_array,0.0)	#	84	 R_air: M_gar_c+M_10fthf_c+M_gln_L_c+2*M_atp_c+M_h2o_c = M_air_c+M_thf_c+M_glu_L_c+2*M_adp_c+2*M_pi_c+3*M_h_c
 push!(rate_constant_array,0.0)	#	85	 R_aicar: M_air_c+M_asp_L_c+2*M_atp_c+M_hco3_c = M_aicar_c+M_fum_c+2*M_adp_c+2*M_h_c+2*M_pi_c
 push!(rate_constant_array,0.0)	#	86	 R_imp: M_aicar_c+M_10fthf_c = M_imp_c+M_thf_c+M_h2o_c
@@ -722,11 +722,11 @@ saturation_constant_array[82,18] = 1.0;	#	 Name: R_chor: M_e4p_c+2*M_pep_c+M_nad
 saturation_constant_array[82,48] = 1.0;	#	 Name: R_chor: M_e4p_c+2*M_pep_c+M_nadph_c+M_atp_c = M_chor_c+M_nadp_c+M_adp_c+4*M_pi_c Species: M_pep_c
 saturation_constant_array[82,96] = 1.0;	#	 Name: R_chor: M_e4p_c+2*M_pep_c+M_nadph_c+M_atp_c = M_chor_c+M_nadp_c+M_adp_c+4*M_pi_c Species: M_nadph_c
 saturation_constant_array[82,53] = 1.0;	#	 Name: R_chor: M_e4p_c+2*M_pep_c+M_nadph_c+M_atp_c = M_chor_c+M_nadp_c+M_adp_c+4*M_pi_c Species: M_atp_c
-saturation_constant_array[83,16] = 1.0;	#	 Name: R_gar: M_r5p_c+M_glu_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+2*M_h_c Species: M_r5p_c
-saturation_constant_array[83,83] = 1.0;	#	 Name: R_gar: M_r5p_c+M_glu_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+2*M_h_c Species: M_glu_L_c
-saturation_constant_array[83,67] = 1.0;	#	 Name: R_gar: M_r5p_c+M_glu_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+2*M_h_c Species: M_gly_L_c
-saturation_constant_array[83,53] = 1.0;	#	 Name: R_gar: M_r5p_c+M_glu_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+2*M_h_c Species: M_atp_c
-saturation_constant_array[83,92] = 1.0;	#	 Name: R_gar: M_r5p_c+M_glu_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+2*M_h_c Species: M_h2o_c
+saturation_constant_array[83,16] = 1.0;	#	 Name: R_gar: M_r5p_c+M_gln_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+7*M_h_c Species: M_r5p_c
+saturation_constant_array[83,84] = 1.0;	#	 Name: R_gar: M_r5p_c+M_gln_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+7*M_h_c Species: M_gln_L_c
+saturation_constant_array[83,67] = 1.0;	#	 Name: R_gar: M_r5p_c+M_gln_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+7*M_h_c Species: M_gly_L_c
+saturation_constant_array[83,53] = 1.0;	#	 Name: R_gar: M_r5p_c+M_gln_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+7*M_h_c Species: M_atp_c
+saturation_constant_array[83,92] = 1.0;	#	 Name: R_gar: M_r5p_c+M_gln_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c = M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+7*M_h_c Species: M_h2o_c
 saturation_constant_array[84,36] = 1.0;	#	 Name: R_air: M_gar_c+M_10fthf_c+M_gln_L_c+2*M_atp_c+M_h2o_c = M_air_c+M_thf_c+M_glu_L_c+2*M_adp_c+2*M_pi_c+3*M_h_c Species: M_gar_c
 saturation_constant_array[84,37] = 1.0;	#	 Name: R_air: M_gar_c+M_10fthf_c+M_gln_L_c+2*M_atp_c+M_h2o_c = M_air_c+M_thf_c+M_glu_L_c+2*M_adp_c+2*M_pi_c+3*M_h_c Species: M_10fthf_c
 saturation_constant_array[84,84] = 1.0;	#	 Name: R_air: M_gar_c+M_10fthf_c+M_gln_L_c+2*M_atp_c+M_h2o_c = M_air_c+M_thf_c+M_glu_L_c+2*M_adp_c+2*M_pi_c+3*M_h_c Species: M_gln_L_c

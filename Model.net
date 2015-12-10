@@ -166,7 +166,7 @@ R_chor,M_e4p_c+2*M_pep_c+M_nadph_c+M_atp_c,M_chor_c+M_nadp_c+M_adp_c+4*M_pi_c,0,
 // IMP
 // ===============================================
 // Inosine monophosphate (IMP) is precursor to purines adenosine and guanosine.
-R_gar,M_r5p_c+M_glu_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c,M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+2*M_h_c,0,inf;
+R_gar,M_r5p_c+M_gln_L_c+M_gly_L_c+2*M_atp_c+M_h2o_c,M_gar_c+M_glu_L_c+M_adp_c+M_amp_c+M_pi_c+M_ppi_c+7*M_h_c,0,inf;
 R_air,M_gar_c+M_10fthf_c+M_gln_L_c+2*M_atp_c+M_h2o_c,M_air_c+M_thf_c+M_glu_L_c+2*M_adp_c+2*M_pi_c+3*M_h_c,0,inf;
 R_aicar,M_air_c+M_asp_L_c+2*M_atp_c+M_hco3_c,M_aicar_c+M_fum_c+2*M_adp_c+2*M_h_c+2*M_pi_c,0,inf;
 R_imp,M_aicar_c+M_10fthf_c,M_imp_c+M_thf_c+M_h2o_c,0,inf;

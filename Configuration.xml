@@ -6,10 +6,10 @@
         <package required="YES" symbol="OUTPUT_HANDLER_PACKAGE" package_name="org.varnerlab.kwatee.cellfreemodel"></package>
     </ListOfPackages>
     <ListOfPaths>
-        <path required="YES" symbol="KWATEE_INPUT_PATH" path_location="/home/nicholas/code/KwateeGitHubDec7/"></path>
-        <path required="YES" symbol="KWATEE_SOURCE_OUTPUT_PATH" path_location="/home/nicholas/code/KwateeGitHubDec7/src/"></path>
-        <path required="YES" symbol="KWATEE_NETWORK_OUTPUT_PATH" path_location="/home/nicholas/code/KwateeGitHubDec7/network/"></path>
-        <path required="YES" symbol="KWATEE_DEBUG_OUTPUT_PATH" path_location="/home/nicholas/code/KwateeGitHubDec7/debug/"></path>
+        <path required="YES" symbol="KWATEE_INPUT_PATH" path_location="/home/nicholas/code/KwateeGitHubDec9/"></path>
+        <path required="YES" symbol="KWATEE_SOURCE_OUTPUT_PATH" path_location="/home/nicholas/code/KwateeGitHubDec9/src/"></path>
+        <path required="YES" symbol="KWATEE_NETWORK_OUTPUT_PATH" path_location="/home/nicholas/code/KwateeGitHubDec9/network/"></path>
+        <path required="YES" symbol="KWATEE_DEBUG_OUTPUT_PATH" path_location="/home/nicholas/code/KwateeGitHubDec9/debug/"></path>
 
         <path required="YES" symbol="KWATEE_SERVER_ROOT_DIRECTORY" path_location="/home/nicholas/code/KwateeServer/"></path>
         <path required="YES" symbol="KWATEE_SERVER_JAR_DIRECTORY" path_location="/home/nicholas/code/KwateeServer/dist/"></path>
