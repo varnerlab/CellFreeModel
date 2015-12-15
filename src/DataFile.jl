@@ -28,7 +28,7 @@ function DataFile(TSTART,TSTOP,Ts)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 12-09-2015 20:14:40
+# Generation timestamp: 12-15-2015 14:24:33
 # 
 # Input arguments: 
 # TSTART  - Time start 
@@ -40,7 +40,7 @@ function DataFile(TSTART,TSTOP,Ts)
 # ----------------------------------------------------------------------------------- #
 
 # Load the stoichiometric matrix - 
-S = float(open(readdlm,"/home/nicholas/code/KwateeGitHubDec9/network/Network.dat"));
+S = float(open(readdlm,"/home/nicholas/code/KwateeGitHub/KwateeGitHubDec15/network/Network.dat"));
 (NSPECIES,NREACTIONS) = size(S);
 
 # Formulate the initial condition array - 
@@ -266,15 +266,19 @@ push!(initial_condition_array,1.0);	#	218	 id:E_Ex_2	 symbol:E_Ex_2
 push!(initial_condition_array,1.0);	#	219	 id:E_Ex_3	 symbol:E_Ex_3
 push!(initial_condition_array,1.0);	#	220	 id:E_Ex_4	 symbol:E_Ex_4
 push!(initial_condition_array,1.0);	#	221	 id:E_Ex_5	 symbol:E_Ex_5
-push!(initial_condition_array,1.0);	#	222	 id:E_R_CAT	 symbol:E_R_CAT
-push!(initial_condition_array,1.0);	#	223	 id:E_R_amp_ppi	 symbol:E_R_amp_ppi
-push!(initial_condition_array,1.0);	#	224	 id:E_R_amp_pi	 symbol:E_R_amp_pi
-push!(initial_condition_array,1.0);	#	225	 id:E_R_gmp_ppi	 symbol:E_R_gmp_ppi
-push!(initial_condition_array,1.0);	#	226	 id:E_R_gmp_pi	 symbol:E_R_gmp_pi
-push!(initial_condition_array,1.0);	#	227	 id:E_R_cmp_ppi	 symbol:E_R_cmp_ppi
-push!(initial_condition_array,1.0);	#	228	 id:E_R_cmp_pi	 symbol:E_R_cmp_pi
-push!(initial_condition_array,1.0);	#	229	 id:E_R_ump_ppi	 symbol:E_R_ump_ppi
-push!(initial_condition_array,1.0);	#	230	 id:E_R_ump_pi	 symbol:E_R_ump_pi
+push!(initial_condition_array,1.0);	#	222	 id:E_ATP_deg	 symbol:E_ATP_deg
+push!(initial_condition_array,1.0);	#	223	 id:E_GTP_deg	 symbol:E_GTP_deg
+push!(initial_condition_array,1.0);	#	224	 id:E_CTP_deg	 symbol:E_CTP_deg
+push!(initial_condition_array,1.0);	#	225	 id:E_UTP_deg	 symbol:E_UTP_deg
+push!(initial_condition_array,1.0);	#	226	 id:E_R_CAT	 symbol:E_R_CAT
+push!(initial_condition_array,1.0);	#	227	 id:E_R_amp_ppi	 symbol:E_R_amp_ppi
+push!(initial_condition_array,1.0);	#	228	 id:E_R_amp_pi	 symbol:E_R_amp_pi
+push!(initial_condition_array,1.0);	#	229	 id:E_R_gmp_ppi	 symbol:E_R_gmp_ppi
+push!(initial_condition_array,1.0);	#	230	 id:E_R_gmp_pi	 symbol:E_R_gmp_pi
+push!(initial_condition_array,1.0);	#	231	 id:E_R_cmp_ppi	 symbol:E_R_cmp_ppi
+push!(initial_condition_array,1.0);	#	232	 id:E_R_cmp_pi	 symbol:E_R_cmp_pi
+push!(initial_condition_array,1.0);	#	233	 id:E_R_ump_ppi	 symbol:E_R_ump_ppi
+push!(initial_condition_array,1.0);	#	234	 id:E_R_ump_pi	 symbol:E_R_ump_pi
 
 # Formulate the rate constant array - 
 rate_constant_array = Float64[];
@@ -403,149 +407,157 @@ push!(rate_constant_array,0.0)	#	122	 Ex_2: [] = M_co2_c
 push!(rate_constant_array,0.0)	#	123	 Ex_3: [] = M_pi_c
 push!(rate_constant_array,0.0)	#	124	 Ex_4: [] = M_nh4_c
 push!(rate_constant_array,0.0)	#	125	 Ex_5: [] = M_so4_c
-push!(rate_constant_array,0.0)	#	126	 R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT
-push!(rate_constant_array,0.0)	#	127	 R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c
-push!(rate_constant_array,0.0)	#	128	 R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c
-push!(rate_constant_array,0.0)	#	129	 R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c
-push!(rate_constant_array,0.0)	#	130	 R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c
-push!(rate_constant_array,0.0)	#	131	 R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c
-push!(rate_constant_array,0.0)	#	132	 R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c
-push!(rate_constant_array,0.0)	#	133	 R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c
-push!(rate_constant_array,0.0)	#	134	 R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c
-push!(rate_constant_array,0.0)	#	135	 Degradation: E_R_PTS = []
-push!(rate_constant_array,0.0)	#	136	 Degradation: E_R_glk_atp = []
-push!(rate_constant_array,0.0)	#	137	 Degradation: E_R_glk_utp = []
-push!(rate_constant_array,0.0)	#	138	 Degradation: E_R_glk_ctp = []
-push!(rate_constant_array,0.0)	#	139	 Degradation: E_R_glk_gtp = []
-push!(rate_constant_array,0.0)	#	140	 Degradation: E_R_pgi = []
-push!(rate_constant_array,0.0)	#	141	 Degradation: E_R_pgi_R = []
-push!(rate_constant_array,0.0)	#	142	 Degradation: E_R_pfk = []
-push!(rate_constant_array,0.0)	#	143	 Degradation: E_R_fdp = []
-push!(rate_constant_array,0.0)	#	144	 Degradation: E_R_fbaA = []
-push!(rate_constant_array,0.0)	#	145	 Degradation: E_R_fbaA_R = []
-push!(rate_constant_array,0.0)	#	146	 Degradation: E_R_tpiA = []
-push!(rate_constant_array,0.0)	#	147	 Degradation: E_R_tpiA_R = []
-push!(rate_constant_array,0.0)	#	148	 Degradation: E_R_gapA = []
-push!(rate_constant_array,0.0)	#	149	 Degradation: E_R_gapA_R = []
-push!(rate_constant_array,0.0)	#	150	 Degradation: E_R_pgk = []
-push!(rate_constant_array,0.0)	#	151	 Degradation: E_R_pgk_R = []
-push!(rate_constant_array,0.0)	#	152	 Degradation: E_R_gpm = []
-push!(rate_constant_array,0.0)	#	153	 Degradation: E_R_gpm_R = []
-push!(rate_constant_array,0.0)	#	154	 Degradation: E_R_eno = []
-push!(rate_constant_array,0.0)	#	155	 Degradation: E_R_eno_R = []
-push!(rate_constant_array,0.0)	#	156	 Degradation: E_R_pyk = []
-push!(rate_constant_array,0.0)	#	157	 Degradation: E_R_pck = []
-push!(rate_constant_array,0.0)	#	158	 Degradation: E_R_ppc = []
-push!(rate_constant_array,0.0)	#	159	 Degradation: E_R_pdh = []
-push!(rate_constant_array,0.0)	#	160	 Degradation: E_R_pps = []
-push!(rate_constant_array,0.0)	#	161	 Degradation: E_R_zwf = []
-push!(rate_constant_array,0.0)	#	162	 Degradation: E_R_zwf_R = []
-push!(rate_constant_array,0.0)	#	163	 Degradation: E_R_pgl = []
-push!(rate_constant_array,0.0)	#	164	 Degradation: E_R_gnd = []
-push!(rate_constant_array,0.0)	#	165	 Degradation: E_R_rpe = []
-push!(rate_constant_array,0.0)	#	166	 Degradation: E_R_rpe_R = []
-push!(rate_constant_array,0.0)	#	167	 Degradation: E_R_rpi = []
-push!(rate_constant_array,0.0)	#	168	 Degradation: E_R_rpi_R = []
-push!(rate_constant_array,0.0)	#	169	 Degradation: E_R_talAB = []
-push!(rate_constant_array,0.0)	#	170	 Degradation: E_R_talAB_R = []
-push!(rate_constant_array,0.0)	#	171	 Degradation: E_R_tkt1 = []
-push!(rate_constant_array,0.0)	#	172	 Degradation: E_R_tkt1_R = []
-push!(rate_constant_array,0.0)	#	173	 Degradation: E_R_tkt2 = []
-push!(rate_constant_array,0.0)	#	174	 Degradation: E_R_tkt2_R = []
-push!(rate_constant_array,0.0)	#	175	 Degradation: E_R_edd = []
-push!(rate_constant_array,0.0)	#	176	 Degradation: E_R_eda = []
-push!(rate_constant_array,0.0)	#	177	 Degradation: E_R_gltA = []
-push!(rate_constant_array,0.0)	#	178	 Degradation: E_R_acn = []
-push!(rate_constant_array,0.0)	#	179	 Degradation: E_R_acn_R = []
-push!(rate_constant_array,0.0)	#	180	 Degradation: E_R_icd = []
-push!(rate_constant_array,0.0)	#	181	 Degradation: E_R_icd_R = []
-push!(rate_constant_array,0.0)	#	182	 Degradation: E_R_sucAB = []
-push!(rate_constant_array,0.0)	#	183	 Degradation: E_R_sucCD = []
-push!(rate_constant_array,0.0)	#	184	 Degradation: E_R_sucCD_R = []
-push!(rate_constant_array,0.0)	#	185	 Degradation: E_R_sdh = []
-push!(rate_constant_array,0.0)	#	186	 Degradation: E_R_frd = []
-push!(rate_constant_array,0.0)	#	187	 Degradation: E_R_fum = []
-push!(rate_constant_array,0.0)	#	188	 Degradation: E_R_fum_R = []
-push!(rate_constant_array,0.0)	#	189	 Degradation: E_R_mdh = []
-push!(rate_constant_array,0.0)	#	190	 Degradation: E_R_mdh_R = []
-push!(rate_constant_array,0.0)	#	191	 Degradation: E_R_aceA = []
-push!(rate_constant_array,0.0)	#	192	 Degradation: E_R_aceB = []
-push!(rate_constant_array,0.0)	#	193	 Degradation: E_R_maeA = []
-push!(rate_constant_array,0.0)	#	194	 Degradation: E_R_maeB = []
-push!(rate_constant_array,0.0)	#	195	 Degradation: E_R_pta = []
-push!(rate_constant_array,0.0)	#	196	 Degradation: E_R_pta_R = []
-push!(rate_constant_array,0.0)	#	197	 Degradation: E_R_ackA = []
-push!(rate_constant_array,0.0)	#	198	 Degradation: E_R_ackA_R = []
-push!(rate_constant_array,0.0)	#	199	 Degradation: E_R_acs = []
-push!(rate_constant_array,0.0)	#	200	 Degradation: E_R_adhE = []
-push!(rate_constant_array,0.0)	#	201	 Degradation: E_R_adhE_R = []
-push!(rate_constant_array,0.0)	#	202	 Degradation: E_R_ldh_f = []
-push!(rate_constant_array,0.0)	#	203	 Degradation: E_R_ldh_r = []
-push!(rate_constant_array,0.0)	#	204	 Degradation: E_R_pflAB = []
-push!(rate_constant_array,0.0)	#	205	 Degradation: E_R_cyd = []
-push!(rate_constant_array,0.0)	#	206	 Degradation: E_R_app = []
-push!(rate_constant_array,0.0)	#	207	 Degradation: E_R_atp = []
-push!(rate_constant_array,0.0)	#	208	 Degradation: E_R_nuo = []
-push!(rate_constant_array,0.0)	#	209	 Degradation: E_R_pnt1 = []
-push!(rate_constant_array,0.0)	#	210	 Degradation: E_R_pnt2 = []
-push!(rate_constant_array,0.0)	#	211	 Degradation: E_R_ndh1 = []
-push!(rate_constant_array,0.0)	#	212	 Degradation: E_R_ndh2 = []
-push!(rate_constant_array,0.0)	#	213	 Degradation: E_R_hack1 = []
-push!(rate_constant_array,0.0)	#	214	 Degradation: E_R_ppk = []
-push!(rate_constant_array,0.0)	#	215	 Degradation: E_R_ppa = []
-push!(rate_constant_array,0.0)	#	216	 Degradation: E_R_chor = []
-push!(rate_constant_array,0.0)	#	217	 Degradation: E_R_gar = []
-push!(rate_constant_array,0.0)	#	218	 Degradation: E_R_air = []
-push!(rate_constant_array,0.0)	#	219	 Degradation: E_R_aicar = []
-push!(rate_constant_array,0.0)	#	220	 Degradation: E_R_imp = []
-push!(rate_constant_array,0.0)	#	221	 Degradation: E_R_gmp = []
-push!(rate_constant_array,0.0)	#	222	 Degradation: E_R_gdp = []
-push!(rate_constant_array,0.0)	#	223	 Degradation: E_R_gtp = []
-push!(rate_constant_array,0.0)	#	224	 Degradation: E_R_amp = []
-push!(rate_constant_array,0.0)	#	225	 Degradation: E_R_adk = []
-push!(rate_constant_array,0.0)	#	226	 Degradation: E_R_adk_R = []
-push!(rate_constant_array,0.0)	#	227	 Degradation: E_R_ump = []
-push!(rate_constant_array,0.0)	#	228	 Degradation: E_R_udp = []
-push!(rate_constant_array,0.0)	#	229	 Degradation: E_R_utp = []
-push!(rate_constant_array,0.0)	#	230	 Degradation: E_R_ctp = []
-push!(rate_constant_array,0.0)	#	231	 Degradation: E_R_cdp = []
-push!(rate_constant_array,0.0)	#	232	 Degradation: E_R_cmp = []
-push!(rate_constant_array,0.0)	#	233	 Degradation: E_R_alaAC = []
-push!(rate_constant_array,0.0)	#	234	 Degradation: E_R_arg = []
-push!(rate_constant_array,0.0)	#	235	 Degradation: E_R_aspC = []
-push!(rate_constant_array,0.0)	#	236	 Degradation: E_R_asnB = []
-push!(rate_constant_array,0.0)	#	237	 Degradation: E_R_asnA = []
-push!(rate_constant_array,0.0)	#	238	 Degradation: E_R_cysEMK = []
-push!(rate_constant_array,0.0)	#	239	 Degradation: E_R_gltBD = []
-push!(rate_constant_array,0.0)	#	240	 Degradation: E_R_gdhA = []
-push!(rate_constant_array,0.0)	#	241	 Degradation: E_R_glnA = []
-push!(rate_constant_array,0.0)	#	242	 Degradation: E_R_glyA = []
-push!(rate_constant_array,0.0)	#	243	 Degradation: E_R_his = []
-push!(rate_constant_array,0.0)	#	244	 Degradation: E_R_ile = []
-push!(rate_constant_array,0.0)	#	245	 Degradation: E_R_leu = []
-push!(rate_constant_array,0.0)	#	246	 Degradation: E_R_lys = []
-push!(rate_constant_array,0.0)	#	247	 Degradation: E_R_met = []
-push!(rate_constant_array,0.0)	#	248	 Degradation: E_R_phe = []
-push!(rate_constant_array,0.0)	#	249	 Degradation: E_R_pro = []
-push!(rate_constant_array,0.0)	#	250	 Degradation: E_R_serABC = []
-push!(rate_constant_array,0.0)	#	251	 Degradation: E_R_thr = []
-push!(rate_constant_array,0.0)	#	252	 Degradation: E_R_trp = []
-push!(rate_constant_array,0.0)	#	253	 Degradation: E_R_tyr = []
-push!(rate_constant_array,0.0)	#	254	 Degradation: E_R_val = []
-push!(rate_constant_array,0.0)	#	255	 Degradation: E_Ex_1 = []
-push!(rate_constant_array,0.0)	#	256	 Degradation: E_Ex_2 = []
-push!(rate_constant_array,0.0)	#	257	 Degradation: E_Ex_3 = []
-push!(rate_constant_array,0.0)	#	258	 Degradation: E_Ex_4 = []
-push!(rate_constant_array,0.0)	#	259	 Degradation: E_Ex_5 = []
-push!(rate_constant_array,0.0)	#	260	 Degradation: E_R_CAT = []
-push!(rate_constant_array,0.0)	#	261	 Degradation: E_R_amp_ppi = []
-push!(rate_constant_array,0.0)	#	262	 Degradation: E_R_amp_pi = []
-push!(rate_constant_array,0.0)	#	263	 Degradation: E_R_gmp_ppi = []
-push!(rate_constant_array,0.0)	#	264	 Degradation: E_R_gmp_pi = []
-push!(rate_constant_array,0.0)	#	265	 Degradation: E_R_cmp_ppi = []
-push!(rate_constant_array,0.0)	#	266	 Degradation: E_R_cmp_pi = []
-push!(rate_constant_array,0.0)	#	267	 Degradation: E_R_ump_ppi = []
-push!(rate_constant_array,0.0)	#	268	 Degradation: E_R_ump_pi = []
+push!(rate_constant_array,0.0)	#	126	 ATP_deg: M_atp_c = []
+push!(rate_constant_array,0.0)	#	127	 GTP_deg: M_gtp_c = []
+push!(rate_constant_array,0.0)	#	128	 CTP_deg: M_ctp_c = []
+push!(rate_constant_array,0.0)	#	129	 UTP_deg: M_utp_c = []
+push!(rate_constant_array,0.0)	#	130	 R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT
+push!(rate_constant_array,0.0)	#	131	 R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c
+push!(rate_constant_array,0.0)	#	132	 R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c
+push!(rate_constant_array,0.0)	#	133	 R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c
+push!(rate_constant_array,0.0)	#	134	 R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c
+push!(rate_constant_array,0.0)	#	135	 R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c
+push!(rate_constant_array,0.0)	#	136	 R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c
+push!(rate_constant_array,0.0)	#	137	 R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c
+push!(rate_constant_array,0.0)	#	138	 R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c
+push!(rate_constant_array,0.0)	#	139	 Degradation: E_R_PTS = []
+push!(rate_constant_array,0.0)	#	140	 Degradation: E_R_glk_atp = []
+push!(rate_constant_array,0.0)	#	141	 Degradation: E_R_glk_utp = []
+push!(rate_constant_array,0.0)	#	142	 Degradation: E_R_glk_ctp = []
+push!(rate_constant_array,0.0)	#	143	 Degradation: E_R_glk_gtp = []
+push!(rate_constant_array,0.0)	#	144	 Degradation: E_R_pgi = []
+push!(rate_constant_array,0.0)	#	145	 Degradation: E_R_pgi_R = []
+push!(rate_constant_array,0.0)	#	146	 Degradation: E_R_pfk = []
+push!(rate_constant_array,0.0)	#	147	 Degradation: E_R_fdp = []
+push!(rate_constant_array,0.0)	#	148	 Degradation: E_R_fbaA = []
+push!(rate_constant_array,0.0)	#	149	 Degradation: E_R_fbaA_R = []
+push!(rate_constant_array,0.0)	#	150	 Degradation: E_R_tpiA = []
+push!(rate_constant_array,0.0)	#	151	 Degradation: E_R_tpiA_R = []
+push!(rate_constant_array,0.0)	#	152	 Degradation: E_R_gapA = []
+push!(rate_constant_array,0.0)	#	153	 Degradation: E_R_gapA_R = []
+push!(rate_constant_array,0.0)	#	154	 Degradation: E_R_pgk = []
+push!(rate_constant_array,0.0)	#	155	 Degradation: E_R_pgk_R = []
+push!(rate_constant_array,0.0)	#	156	 Degradation: E_R_gpm = []
+push!(rate_constant_array,0.0)	#	157	 Degradation: E_R_gpm_R = []
+push!(rate_constant_array,0.0)	#	158	 Degradation: E_R_eno = []
+push!(rate_constant_array,0.0)	#	159	 Degradation: E_R_eno_R = []
+push!(rate_constant_array,0.0)	#	160	 Degradation: E_R_pyk = []
+push!(rate_constant_array,0.0)	#	161	 Degradation: E_R_pck = []
+push!(rate_constant_array,0.0)	#	162	 Degradation: E_R_ppc = []
+push!(rate_constant_array,0.0)	#	163	 Degradation: E_R_pdh = []
+push!(rate_constant_array,0.0)	#	164	 Degradation: E_R_pps = []
+push!(rate_constant_array,0.0)	#	165	 Degradation: E_R_zwf = []
+push!(rate_constant_array,0.0)	#	166	 Degradation: E_R_zwf_R = []
+push!(rate_constant_array,0.0)	#	167	 Degradation: E_R_pgl = []
+push!(rate_constant_array,0.0)	#	168	 Degradation: E_R_gnd = []
+push!(rate_constant_array,0.0)	#	169	 Degradation: E_R_rpe = []
+push!(rate_constant_array,0.0)	#	170	 Degradation: E_R_rpe_R = []
+push!(rate_constant_array,0.0)	#	171	 Degradation: E_R_rpi = []
+push!(rate_constant_array,0.0)	#	172	 Degradation: E_R_rpi_R = []
+push!(rate_constant_array,0.0)	#	173	 Degradation: E_R_talAB = []
+push!(rate_constant_array,0.0)	#	174	 Degradation: E_R_talAB_R = []
+push!(rate_constant_array,0.0)	#	175	 Degradation: E_R_tkt1 = []
+push!(rate_constant_array,0.0)	#	176	 Degradation: E_R_tkt1_R = []
+push!(rate_constant_array,0.0)	#	177	 Degradation: E_R_tkt2 = []
+push!(rate_constant_array,0.0)	#	178	 Degradation: E_R_tkt2_R = []
+push!(rate_constant_array,0.0)	#	179	 Degradation: E_R_edd = []
+push!(rate_constant_array,0.0)	#	180	 Degradation: E_R_eda = []
+push!(rate_constant_array,0.0)	#	181	 Degradation: E_R_gltA = []
+push!(rate_constant_array,0.0)	#	182	 Degradation: E_R_acn = []
+push!(rate_constant_array,0.0)	#	183	 Degradation: E_R_acn_R = []
+push!(rate_constant_array,0.0)	#	184	 Degradation: E_R_icd = []
+push!(rate_constant_array,0.0)	#	185	 Degradation: E_R_icd_R = []
+push!(rate_constant_array,0.0)	#	186	 Degradation: E_R_sucAB = []
+push!(rate_constant_array,0.0)	#	187	 Degradation: E_R_sucCD = []
+push!(rate_constant_array,0.0)	#	188	 Degradation: E_R_sucCD_R = []
+push!(rate_constant_array,0.0)	#	189	 Degradation: E_R_sdh = []
+push!(rate_constant_array,0.0)	#	190	 Degradation: E_R_frd = []
+push!(rate_constant_array,0.0)	#	191	 Degradation: E_R_fum = []
+push!(rate_constant_array,0.0)	#	192	 Degradation: E_R_fum_R = []
+push!(rate_constant_array,0.0)	#	193	 Degradation: E_R_mdh = []
+push!(rate_constant_array,0.0)	#	194	 Degradation: E_R_mdh_R = []
+push!(rate_constant_array,0.0)	#	195	 Degradation: E_R_aceA = []
+push!(rate_constant_array,0.0)	#	196	 Degradation: E_R_aceB = []
+push!(rate_constant_array,0.0)	#	197	 Degradation: E_R_maeA = []
+push!(rate_constant_array,0.0)	#	198	 Degradation: E_R_maeB = []
+push!(rate_constant_array,0.0)	#	199	 Degradation: E_R_pta = []
+push!(rate_constant_array,0.0)	#	200	 Degradation: E_R_pta_R = []
+push!(rate_constant_array,0.0)	#	201	 Degradation: E_R_ackA = []
+push!(rate_constant_array,0.0)	#	202	 Degradation: E_R_ackA_R = []
+push!(rate_constant_array,0.0)	#	203	 Degradation: E_R_acs = []
+push!(rate_constant_array,0.0)	#	204	 Degradation: E_R_adhE = []
+push!(rate_constant_array,0.0)	#	205	 Degradation: E_R_adhE_R = []
+push!(rate_constant_array,0.0)	#	206	 Degradation: E_R_ldh_f = []
+push!(rate_constant_array,0.0)	#	207	 Degradation: E_R_ldh_r = []
+push!(rate_constant_array,0.0)	#	208	 Degradation: E_R_pflAB = []
+push!(rate_constant_array,0.0)	#	209	 Degradation: E_R_cyd = []
+push!(rate_constant_array,0.0)	#	210	 Degradation: E_R_app = []
+push!(rate_constant_array,0.0)	#	211	 Degradation: E_R_atp = []
+push!(rate_constant_array,0.0)	#	212	 Degradation: E_R_nuo = []
+push!(rate_constant_array,0.0)	#	213	 Degradation: E_R_pnt1 = []
+push!(rate_constant_array,0.0)	#	214	 Degradation: E_R_pnt2 = []
+push!(rate_constant_array,0.0)	#	215	 Degradation: E_R_ndh1 = []
+push!(rate_constant_array,0.0)	#	216	 Degradation: E_R_ndh2 = []
+push!(rate_constant_array,0.0)	#	217	 Degradation: E_R_hack1 = []
+push!(rate_constant_array,0.0)	#	218	 Degradation: E_R_ppk = []
+push!(rate_constant_array,0.0)	#	219	 Degradation: E_R_ppa = []
+push!(rate_constant_array,0.0)	#	220	 Degradation: E_R_chor = []
+push!(rate_constant_array,0.0)	#	221	 Degradation: E_R_gar = []
+push!(rate_constant_array,0.0)	#	222	 Degradation: E_R_air = []
+push!(rate_constant_array,0.0)	#	223	 Degradation: E_R_aicar = []
+push!(rate_constant_array,0.0)	#	224	 Degradation: E_R_imp = []
+push!(rate_constant_array,0.0)	#	225	 Degradation: E_R_gmp = []
+push!(rate_constant_array,0.0)	#	226	 Degradation: E_R_gdp = []
+push!(rate_constant_array,0.0)	#	227	 Degradation: E_R_gtp = []
+push!(rate_constant_array,0.0)	#	228	 Degradation: E_R_amp = []
+push!(rate_constant_array,0.0)	#	229	 Degradation: E_R_adk = []
+push!(rate_constant_array,0.0)	#	230	 Degradation: E_R_adk_R = []
+push!(rate_constant_array,0.0)	#	231	 Degradation: E_R_ump = []
+push!(rate_constant_array,0.0)	#	232	 Degradation: E_R_udp = []
+push!(rate_constant_array,0.0)	#	233	 Degradation: E_R_utp = []
+push!(rate_constant_array,0.0)	#	234	 Degradation: E_R_ctp = []
+push!(rate_constant_array,0.0)	#	235	 Degradation: E_R_cdp = []
+push!(rate_constant_array,0.0)	#	236	 Degradation: E_R_cmp = []
+push!(rate_constant_array,0.0)	#	237	 Degradation: E_R_alaAC = []
+push!(rate_constant_array,0.0)	#	238	 Degradation: E_R_arg = []
+push!(rate_constant_array,0.0)	#	239	 Degradation: E_R_aspC = []
+push!(rate_constant_array,0.0)	#	240	 Degradation: E_R_asnB = []
+push!(rate_constant_array,0.0)	#	241	 Degradation: E_R_asnA = []
+push!(rate_constant_array,0.0)	#	242	 Degradation: E_R_cysEMK = []
+push!(rate_constant_array,0.0)	#	243	 Degradation: E_R_gltBD = []
+push!(rate_constant_array,0.0)	#	244	 Degradation: E_R_gdhA = []
+push!(rate_constant_array,0.0)	#	245	 Degradation: E_R_glnA = []
+push!(rate_constant_array,0.0)	#	246	 Degradation: E_R_glyA = []
+push!(rate_constant_array,0.0)	#	247	 Degradation: E_R_his = []
+push!(rate_constant_array,0.0)	#	248	 Degradation: E_R_ile = []
+push!(rate_constant_array,0.0)	#	249	 Degradation: E_R_leu = []
+push!(rate_constant_array,0.0)	#	250	 Degradation: E_R_lys = []
+push!(rate_constant_array,0.0)	#	251	 Degradation: E_R_met = []
+push!(rate_constant_array,0.0)	#	252	 Degradation: E_R_phe = []
+push!(rate_constant_array,0.0)	#	253	 Degradation: E_R_pro = []
+push!(rate_constant_array,0.0)	#	254	 Degradation: E_R_serABC = []
+push!(rate_constant_array,0.0)	#	255	 Degradation: E_R_thr = []
+push!(rate_constant_array,0.0)	#	256	 Degradation: E_R_trp = []
+push!(rate_constant_array,0.0)	#	257	 Degradation: E_R_tyr = []
+push!(rate_constant_array,0.0)	#	258	 Degradation: E_R_val = []
+push!(rate_constant_array,0.0)	#	259	 Degradation: E_Ex_1 = []
+push!(rate_constant_array,0.0)	#	260	 Degradation: E_Ex_2 = []
+push!(rate_constant_array,0.0)	#	261	 Degradation: E_Ex_3 = []
+push!(rate_constant_array,0.0)	#	262	 Degradation: E_Ex_4 = []
+push!(rate_constant_array,0.0)	#	263	 Degradation: E_Ex_5 = []
+push!(rate_constant_array,0.0)	#	264	 Degradation: E_ATP_deg = []
+push!(rate_constant_array,0.0)	#	265	 Degradation: E_GTP_deg = []
+push!(rate_constant_array,0.0)	#	266	 Degradation: E_CTP_deg = []
+push!(rate_constant_array,0.0)	#	267	 Degradation: E_UTP_deg = []
+push!(rate_constant_array,0.0)	#	268	 Degradation: E_R_CAT = []
+push!(rate_constant_array,0.0)	#	269	 Degradation: E_R_amp_ppi = []
+push!(rate_constant_array,0.0)	#	270	 Degradation: E_R_amp_pi = []
+push!(rate_constant_array,0.0)	#	271	 Degradation: E_R_gmp_ppi = []
+push!(rate_constant_array,0.0)	#	272	 Degradation: E_R_gmp_pi = []
+push!(rate_constant_array,0.0)	#	273	 Degradation: E_R_cmp_ppi = []
+push!(rate_constant_array,0.0)	#	274	 Degradation: E_R_cmp_pi = []
+push!(rate_constant_array,0.0)	#	275	 Degradation: E_R_ump_ppi = []
+push!(rate_constant_array,0.0)	#	276	 Degradation: E_R_ump_pi = []
 
 # Formulate the saturation constant array - 
 saturation_constant_array = zeros(NREACTIONS,NSPECIES);
@@ -863,51 +875,55 @@ saturation_constant_array[120,49] = 1.0;	#	 Name: R_val: 2*M_pyr_c+2*M_h_c+M_nad
 saturation_constant_array[120,91] = 1.0;	#	 Name: R_val: 2*M_pyr_c+2*M_h_c+M_nadph_c+M_glu_L_c = M_val_L_c+M_co2_c+M_nadp_c+M_h2o_c+M_akg_c Species: M_h_c
 saturation_constant_array[120,96] = 1.0;	#	 Name: R_val: 2*M_pyr_c+2*M_h_c+M_nadph_c+M_glu_L_c = M_val_L_c+M_co2_c+M_nadp_c+M_h2o_c+M_akg_c Species: M_nadph_c
 saturation_constant_array[120,83] = 1.0;	#	 Name: R_val: 2*M_pyr_c+2*M_h_c+M_nadph_c+M_glu_L_c = M_val_L_c+M_co2_c+M_nadp_c+M_h2o_c+M_akg_c Species: M_glu_L_c
-saturation_constant_array[126,73] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_ala_L_c
-saturation_constant_array[126,69] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_asn_L_c
-saturation_constant_array[126,43] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_arg_L_c
-saturation_constant_array[126,66] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_asp_L_c
-saturation_constant_array[126,83] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_glu_L_c
-saturation_constant_array[126,84] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_gln_L_c
-saturation_constant_array[126,67] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_gly_L_c
-saturation_constant_array[126,72] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_his_L_c
-saturation_constant_array[126,68] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_ile_L_c
-saturation_constant_array[126,82] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_leu_L_c
-saturation_constant_array[126,71] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_lys_L_c
-saturation_constant_array[126,81] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_met_L_c
-saturation_constant_array[126,74] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_phe_L_c
-saturation_constant_array[126,75] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_pro_L_c
-saturation_constant_array[126,76] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_ser_L_c
-saturation_constant_array[126,77] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_thr_L_c
-saturation_constant_array[126,78] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_trp_L_c
-saturation_constant_array[126,79] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_tyr_L_c
-saturation_constant_array[126,80] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_val_L_c
-saturation_constant_array[126,53] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_atp_c
-saturation_constant_array[126,56] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_gtp_c
-saturation_constant_array[127,55] = 1.0;	#	 Name: R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c Species: M_amp_c
-saturation_constant_array[127,31] = 1.0;	#	 Name: R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c Species: M_ppi_c
-saturation_constant_array[127,91] = 1.0;	#	 Name: R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c Species: M_h_c
-saturation_constant_array[128,55] = 1.0;	#	 Name: R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c Species: M_amp_c
-saturation_constant_array[128,88] = 1.0;	#	 Name: R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c Species: M_pi_c
-saturation_constant_array[128,91] = 1.0;	#	 Name: R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c Species: M_h_c
-saturation_constant_array[129,58] = 1.0;	#	 Name: R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c Species: M_gmp_c
-saturation_constant_array[129,31] = 1.0;	#	 Name: R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c Species: M_ppi_c
-saturation_constant_array[129,91] = 1.0;	#	 Name: R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c Species: M_h_c
-saturation_constant_array[130,58] = 1.0;	#	 Name: R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c Species: M_gmp_c
-saturation_constant_array[130,88] = 1.0;	#	 Name: R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c Species: M_pi_c
-saturation_constant_array[130,91] = 1.0;	#	 Name: R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c Species: M_h_c
-saturation_constant_array[131,64] = 1.0;	#	 Name: R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c Species: M_cmp_c
-saturation_constant_array[131,31] = 1.0;	#	 Name: R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c Species: M_ppi_c
-saturation_constant_array[131,91] = 1.0;	#	 Name: R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c Species: M_h_c
-saturation_constant_array[132,64] = 1.0;	#	 Name: R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c Species: M_cmp_c
-saturation_constant_array[132,88] = 1.0;	#	 Name: R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c Species: M_pi_c
-saturation_constant_array[132,91] = 1.0;	#	 Name: R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c Species: M_h_c
-saturation_constant_array[133,61] = 1.0;	#	 Name: R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c Species: M_ump_c
-saturation_constant_array[133,31] = 1.0;	#	 Name: R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c Species: M_ppi_c
-saturation_constant_array[133,91] = 1.0;	#	 Name: R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c Species: M_h_c
-saturation_constant_array[134,61] = 1.0;	#	 Name: R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c Species: M_ump_c
-saturation_constant_array[134,88] = 1.0;	#	 Name: R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c Species: M_pi_c
-saturation_constant_array[134,91] = 1.0;	#	 Name: R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c Species: M_h_c
+saturation_constant_array[126,53] = 1.0;	#	 Name: ATP_deg: M_atp_c = [] Species: M_atp_c
+saturation_constant_array[127,56] = 1.0;	#	 Name: GTP_deg: M_gtp_c = [] Species: M_gtp_c
+saturation_constant_array[128,62] = 1.0;	#	 Name: CTP_deg: M_ctp_c = [] Species: M_ctp_c
+saturation_constant_array[129,59] = 1.0;	#	 Name: UTP_deg: M_utp_c = [] Species: M_utp_c
+saturation_constant_array[130,73] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_ala_L_c
+saturation_constant_array[130,69] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_asn_L_c
+saturation_constant_array[130,43] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_arg_L_c
+saturation_constant_array[130,66] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_asp_L_c
+saturation_constant_array[130,83] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_glu_L_c
+saturation_constant_array[130,84] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_gln_L_c
+saturation_constant_array[130,67] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_gly_L_c
+saturation_constant_array[130,72] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_his_L_c
+saturation_constant_array[130,68] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_ile_L_c
+saturation_constant_array[130,82] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_leu_L_c
+saturation_constant_array[130,71] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_lys_L_c
+saturation_constant_array[130,81] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_met_L_c
+saturation_constant_array[130,74] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_phe_L_c
+saturation_constant_array[130,75] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_pro_L_c
+saturation_constant_array[130,76] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_ser_L_c
+saturation_constant_array[130,77] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_thr_L_c
+saturation_constant_array[130,78] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_trp_L_c
+saturation_constant_array[130,79] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_tyr_L_c
+saturation_constant_array[130,80] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_val_L_c
+saturation_constant_array[130,53] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_atp_c
+saturation_constant_array[130,56] = 1.0;	#	 Name: R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT Species: M_gtp_c
+saturation_constant_array[131,55] = 1.0;	#	 Name: R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c Species: M_amp_c
+saturation_constant_array[131,31] = 1.0;	#	 Name: R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c Species: M_ppi_c
+saturation_constant_array[131,91] = 1.0;	#	 Name: R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c Species: M_h_c
+saturation_constant_array[132,55] = 1.0;	#	 Name: R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c Species: M_amp_c
+saturation_constant_array[132,88] = 1.0;	#	 Name: R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c Species: M_pi_c
+saturation_constant_array[132,91] = 1.0;	#	 Name: R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c Species: M_h_c
+saturation_constant_array[133,58] = 1.0;	#	 Name: R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c Species: M_gmp_c
+saturation_constant_array[133,31] = 1.0;	#	 Name: R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c Species: M_ppi_c
+saturation_constant_array[133,91] = 1.0;	#	 Name: R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c Species: M_h_c
+saturation_constant_array[134,58] = 1.0;	#	 Name: R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c Species: M_gmp_c
+saturation_constant_array[134,88] = 1.0;	#	 Name: R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c Species: M_pi_c
+saturation_constant_array[134,91] = 1.0;	#	 Name: R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c Species: M_h_c
+saturation_constant_array[135,64] = 1.0;	#	 Name: R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c Species: M_cmp_c
+saturation_constant_array[135,31] = 1.0;	#	 Name: R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c Species: M_ppi_c
+saturation_constant_array[135,91] = 1.0;	#	 Name: R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c Species: M_h_c
+saturation_constant_array[136,64] = 1.0;	#	 Name: R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c Species: M_cmp_c
+saturation_constant_array[136,88] = 1.0;	#	 Name: R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c Species: M_pi_c
+saturation_constant_array[136,91] = 1.0;	#	 Name: R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c Species: M_h_c
+saturation_constant_array[137,61] = 1.0;	#	 Name: R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c Species: M_ump_c
+saturation_constant_array[137,31] = 1.0;	#	 Name: R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c Species: M_ppi_c
+saturation_constant_array[137,91] = 1.0;	#	 Name: R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c Species: M_h_c
+saturation_constant_array[138,61] = 1.0;	#	 Name: R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c Species: M_ump_c
+saturation_constant_array[138,88] = 1.0;	#	 Name: R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c Species: M_pi_c
+saturation_constant_array[138,91] = 1.0;	#	 Name: R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c Species: M_h_c
 
 # Formulate control parameter array - 
 control_parameter_array = zeros(17,2);

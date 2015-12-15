@@ -27,7 +27,7 @@ function Control(t,x,rate_vector,data_dictionary)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 12-09-2015 20:14:40
+# Generation timestamp: 12-15-2015 14:24:33
 # 
 # Arguments: 
 # t  - current time 
@@ -263,15 +263,19 @@ E_Ex_2 = x[218];
 E_Ex_3 = x[219];
 E_Ex_4 = x[220];
 E_Ex_5 = x[221];
-E_R_CAT = x[222];
-E_R_amp_ppi = x[223];
-E_R_amp_pi = x[224];
-E_R_gmp_ppi = x[225];
-E_R_gmp_pi = x[226];
-E_R_cmp_ppi = x[227];
-E_R_cmp_pi = x[228];
-E_R_ump_ppi = x[229];
-E_R_ump_pi = x[230];
+E_ATP_deg = x[222];
+E_GTP_deg = x[223];
+E_CTP_deg = x[224];
+E_UTP_deg = x[225];
+E_R_CAT = x[226];
+E_R_amp_ppi = x[227];
+E_R_amp_pi = x[228];
+E_R_gmp_ppi = x[229];
+E_R_gmp_pi = x[230];
+E_R_cmp_ppi = x[231];
+E_R_cmp_pi = x[232];
+E_R_ump_ppi = x[233];
+E_R_ump_pi = x[234];
 
 transfer_function_vector = Float64[];
 # type: inhibition actor: M_pep_c target: R_pfk

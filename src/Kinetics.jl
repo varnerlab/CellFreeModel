@@ -27,7 +27,7 @@ function Kinetics(t,x,data_dictionary)
 # Username: nicholas
 # Type: CFPS-JULIA
 # Version: 1.0
-# Generation timestamp: 12-09-2015 20:14:40
+# Generation timestamp: 12-15-2015 14:24:33
 # 
 # Input arguments: 
 # t  - current time 
@@ -260,15 +260,19 @@ E_Ex_2 = x[218];
 E_Ex_3 = x[219];
 E_Ex_4 = x[220];
 E_Ex_5 = x[221];
-E_R_CAT = x[222];
-E_R_amp_ppi = x[223];
-E_R_amp_pi = x[224];
-E_R_gmp_ppi = x[225];
-E_R_gmp_pi = x[226];
-E_R_cmp_ppi = x[227];
-E_R_cmp_pi = x[228];
-E_R_ump_ppi = x[229];
-E_R_ump_pi = x[230];
+E_ATP_deg = x[222];
+E_GTP_deg = x[223];
+E_CTP_deg = x[224];
+E_UTP_deg = x[225];
+E_R_CAT = x[226];
+E_R_amp_ppi = x[227];
+E_R_amp_pi = x[228];
+E_R_gmp_ppi = x[229];
+E_R_gmp_pi = x[230];
+E_R_cmp_ppi = x[231];
+E_R_cmp_pi = x[232];
+E_R_ump_ppi = x[233];
+E_R_ump_pi = x[234];
 
 # Formulate the kinetic rate vector - 
 rate_constant_array = data_dictionary["RATE_CONSTANT_ARRAY"];
@@ -900,718 +904,758 @@ tmp_reaction = rate_constant_array[125]*(E_Ex_5);
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
+# ATP_deg: M_atp_c = []
+tmp_reaction = rate_constant_array[126]*(E_ATP_deg)*(M_atp_c/(saturation_constant_array[126,53] + M_atp_c));
+push!(rate_vector,tmp_reaction);
+tmp_reaction = 0;
+
+# GTP_deg: M_gtp_c = []
+tmp_reaction = rate_constant_array[127]*(E_GTP_deg)*(M_gtp_c/(saturation_constant_array[127,56] + M_gtp_c));
+push!(rate_vector,tmp_reaction);
+tmp_reaction = 0;
+
+# CTP_deg: M_ctp_c = []
+tmp_reaction = rate_constant_array[128]*(E_CTP_deg)*(M_ctp_c/(saturation_constant_array[128,62] + M_ctp_c));
+push!(rate_vector,tmp_reaction);
+tmp_reaction = 0;
+
+# UTP_deg: M_utp_c = []
+tmp_reaction = rate_constant_array[129]*(E_UTP_deg)*(M_utp_c/(saturation_constant_array[129,59] + M_utp_c));
+push!(rate_vector,tmp_reaction);
+tmp_reaction = 0;
+
 # R_CAT: 15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c = 219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT
-tmp_reaction = rate_constant_array[126]*(E_R_CAT)*(M_ala_L_c/(saturation_constant_array[126,73] + M_ala_L_c))*(M_asn_L_c/(saturation_constant_array[126,69] + M_asn_L_c))*(M_arg_L_c/(saturation_constant_array[126,43] + M_arg_L_c))*(M_asp_L_c/(saturation_constant_array[126,66] + M_asp_L_c))*(M_glu_L_c/(saturation_constant_array[126,83] + M_glu_L_c))*(M_gln_L_c/(saturation_constant_array[126,84] + M_gln_L_c))*(M_gly_L_c/(saturation_constant_array[126,67] + M_gly_L_c))*(M_his_L_c/(saturation_constant_array[126,72] + M_his_L_c))*(M_ile_L_c/(saturation_constant_array[126,68] + M_ile_L_c))*(M_leu_L_c/(saturation_constant_array[126,82] + M_leu_L_c))*(M_lys_L_c/(saturation_constant_array[126,71] + M_lys_L_c))*(M_met_L_c/(saturation_constant_array[126,81] + M_met_L_c))*(M_phe_L_c/(saturation_constant_array[126,74] + M_phe_L_c))*(M_pro_L_c/(saturation_constant_array[126,75] + M_pro_L_c))*(M_ser_L_c/(saturation_constant_array[126,76] + M_ser_L_c))*(M_thr_L_c/(saturation_constant_array[126,77] + M_thr_L_c))*(M_trp_L_c/(saturation_constant_array[126,78] + M_trp_L_c))*(M_tyr_L_c/(saturation_constant_array[126,79] + M_tyr_L_c))*(M_val_L_c/(saturation_constant_array[126,80] + M_val_L_c))*(M_atp_c/(saturation_constant_array[126,53] + M_atp_c))*(M_gtp_c/(saturation_constant_array[126,56] + M_gtp_c));
+tmp_reaction = rate_constant_array[130]*(E_R_CAT)*(M_ala_L_c/(saturation_constant_array[130,73] + M_ala_L_c))*(M_asn_L_c/(saturation_constant_array[130,69] + M_asn_L_c))*(M_arg_L_c/(saturation_constant_array[130,43] + M_arg_L_c))*(M_asp_L_c/(saturation_constant_array[130,66] + M_asp_L_c))*(M_glu_L_c/(saturation_constant_array[130,83] + M_glu_L_c))*(M_gln_L_c/(saturation_constant_array[130,84] + M_gln_L_c))*(M_gly_L_c/(saturation_constant_array[130,67] + M_gly_L_c))*(M_his_L_c/(saturation_constant_array[130,72] + M_his_L_c))*(M_ile_L_c/(saturation_constant_array[130,68] + M_ile_L_c))*(M_leu_L_c/(saturation_constant_array[130,82] + M_leu_L_c))*(M_lys_L_c/(saturation_constant_array[130,71] + M_lys_L_c))*(M_met_L_c/(saturation_constant_array[130,81] + M_met_L_c))*(M_phe_L_c/(saturation_constant_array[130,74] + M_phe_L_c))*(M_pro_L_c/(saturation_constant_array[130,75] + M_pro_L_c))*(M_ser_L_c/(saturation_constant_array[130,76] + M_ser_L_c))*(M_thr_L_c/(saturation_constant_array[130,77] + M_thr_L_c))*(M_trp_L_c/(saturation_constant_array[130,78] + M_trp_L_c))*(M_tyr_L_c/(saturation_constant_array[130,79] + M_tyr_L_c))*(M_val_L_c/(saturation_constant_array[130,80] + M_val_L_c))*(M_atp_c/(saturation_constant_array[130,53] + M_atp_c))*(M_gtp_c/(saturation_constant_array[130,56] + M_gtp_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # R_amp_ppi: M_amp_c+M_ppi_c+4*M_h_c = M_atp_c+M_h2o_c
-tmp_reaction = rate_constant_array[127]*(E_R_amp_ppi)*(M_amp_c/(saturation_constant_array[127,55] + M_amp_c))*(M_ppi_c/(saturation_constant_array[127,31] + M_ppi_c))*(M_h_c/(saturation_constant_array[127,91] + M_h_c));
+tmp_reaction = rate_constant_array[131]*(E_R_amp_ppi)*(M_amp_c/(saturation_constant_array[131,55] + M_amp_c))*(M_ppi_c/(saturation_constant_array[131,31] + M_ppi_c))*(M_h_c/(saturation_constant_array[131,91] + M_h_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # R_amp_pi: M_amp_c+2*M_pi_c+6*M_h_c = M_atp_c+2*M_h2o_c
-tmp_reaction = rate_constant_array[128]*(E_R_amp_pi)*(M_amp_c/(saturation_constant_array[128,55] + M_amp_c))*(M_pi_c/(saturation_constant_array[128,88] + M_pi_c))*(M_h_c/(saturation_constant_array[128,91] + M_h_c));
+tmp_reaction = rate_constant_array[132]*(E_R_amp_pi)*(M_amp_c/(saturation_constant_array[132,55] + M_amp_c))*(M_pi_c/(saturation_constant_array[132,88] + M_pi_c))*(M_h_c/(saturation_constant_array[132,91] + M_h_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # R_gmp_ppi: M_gmp_c+M_ppi_c+4*M_h_c = M_gtp_c+M_h2o_c
-tmp_reaction = rate_constant_array[129]*(E_R_gmp_ppi)*(M_gmp_c/(saturation_constant_array[129,58] + M_gmp_c))*(M_ppi_c/(saturation_constant_array[129,31] + M_ppi_c))*(M_h_c/(saturation_constant_array[129,91] + M_h_c));
+tmp_reaction = rate_constant_array[133]*(E_R_gmp_ppi)*(M_gmp_c/(saturation_constant_array[133,58] + M_gmp_c))*(M_ppi_c/(saturation_constant_array[133,31] + M_ppi_c))*(M_h_c/(saturation_constant_array[133,91] + M_h_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # R_gmp_pi: M_gmp_c+2*M_pi_c+6*M_h_c = M_gtp_c+2*M_h2o_c
-tmp_reaction = rate_constant_array[130]*(E_R_gmp_pi)*(M_gmp_c/(saturation_constant_array[130,58] + M_gmp_c))*(M_pi_c/(saturation_constant_array[130,88] + M_pi_c))*(M_h_c/(saturation_constant_array[130,91] + M_h_c));
+tmp_reaction = rate_constant_array[134]*(E_R_gmp_pi)*(M_gmp_c/(saturation_constant_array[134,58] + M_gmp_c))*(M_pi_c/(saturation_constant_array[134,88] + M_pi_c))*(M_h_c/(saturation_constant_array[134,91] + M_h_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # R_cmp_ppi: M_cmp_c+M_ppi_c+4*M_h_c = M_ctp_c+M_h2o_c
-tmp_reaction = rate_constant_array[131]*(E_R_cmp_ppi)*(M_cmp_c/(saturation_constant_array[131,64] + M_cmp_c))*(M_ppi_c/(saturation_constant_array[131,31] + M_ppi_c))*(M_h_c/(saturation_constant_array[131,91] + M_h_c));
+tmp_reaction = rate_constant_array[135]*(E_R_cmp_ppi)*(M_cmp_c/(saturation_constant_array[135,64] + M_cmp_c))*(M_ppi_c/(saturation_constant_array[135,31] + M_ppi_c))*(M_h_c/(saturation_constant_array[135,91] + M_h_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # R_cmp_pi: M_cmp_c+2*M_pi_c+6*M_h_c = M_ctp_c+2*M_h2o_c
-tmp_reaction = rate_constant_array[132]*(E_R_cmp_pi)*(M_cmp_c/(saturation_constant_array[132,64] + M_cmp_c))*(M_pi_c/(saturation_constant_array[132,88] + M_pi_c))*(M_h_c/(saturation_constant_array[132,91] + M_h_c));
+tmp_reaction = rate_constant_array[136]*(E_R_cmp_pi)*(M_cmp_c/(saturation_constant_array[136,64] + M_cmp_c))*(M_pi_c/(saturation_constant_array[136,88] + M_pi_c))*(M_h_c/(saturation_constant_array[136,91] + M_h_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # R_ump_ppi: M_ump_c+M_ppi_c+4*M_h_c = M_utp_c+M_h2o_c
-tmp_reaction = rate_constant_array[133]*(E_R_ump_ppi)*(M_ump_c/(saturation_constant_array[133,61] + M_ump_c))*(M_ppi_c/(saturation_constant_array[133,31] + M_ppi_c))*(M_h_c/(saturation_constant_array[133,91] + M_h_c));
+tmp_reaction = rate_constant_array[137]*(E_R_ump_ppi)*(M_ump_c/(saturation_constant_array[137,61] + M_ump_c))*(M_ppi_c/(saturation_constant_array[137,31] + M_ppi_c))*(M_h_c/(saturation_constant_array[137,91] + M_h_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # R_ump_pi: M_ump_c+2*M_pi_c+6*M_h_c = M_utp_c+2*M_h2o_c
-tmp_reaction = rate_constant_array[134]*(E_R_ump_pi)*(M_ump_c/(saturation_constant_array[134,61] + M_ump_c))*(M_pi_c/(saturation_constant_array[134,88] + M_pi_c))*(M_h_c/(saturation_constant_array[134,91] + M_h_c));
+tmp_reaction = rate_constant_array[138]*(E_R_ump_pi)*(M_ump_c/(saturation_constant_array[138,61] + M_ump_c))*(M_pi_c/(saturation_constant_array[138,88] + M_pi_c))*(M_h_c/(saturation_constant_array[138,91] + M_h_c));
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_PTS = []
-tmp_reaction = rate_constant_array[135]*E_R_PTS;
+tmp_reaction = rate_constant_array[139]*E_R_PTS;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_glk_atp = []
-tmp_reaction = rate_constant_array[136]*E_R_glk_atp;
+tmp_reaction = rate_constant_array[140]*E_R_glk_atp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_glk_utp = []
-tmp_reaction = rate_constant_array[137]*E_R_glk_utp;
+tmp_reaction = rate_constant_array[141]*E_R_glk_utp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_glk_ctp = []
-tmp_reaction = rate_constant_array[138]*E_R_glk_ctp;
+tmp_reaction = rate_constant_array[142]*E_R_glk_ctp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_glk_gtp = []
-tmp_reaction = rate_constant_array[139]*E_R_glk_gtp;
+tmp_reaction = rate_constant_array[143]*E_R_glk_gtp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pgi = []
-tmp_reaction = rate_constant_array[140]*E_R_pgi;
+tmp_reaction = rate_constant_array[144]*E_R_pgi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pgi_R = []
-tmp_reaction = rate_constant_array[141]*E_R_pgi_R;
+tmp_reaction = rate_constant_array[145]*E_R_pgi_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pfk = []
-tmp_reaction = rate_constant_array[142]*E_R_pfk;
+tmp_reaction = rate_constant_array[146]*E_R_pfk;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_fdp = []
-tmp_reaction = rate_constant_array[143]*E_R_fdp;
+tmp_reaction = rate_constant_array[147]*E_R_fdp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_fbaA = []
-tmp_reaction = rate_constant_array[144]*E_R_fbaA;
+tmp_reaction = rate_constant_array[148]*E_R_fbaA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_fbaA_R = []
-tmp_reaction = rate_constant_array[145]*E_R_fbaA_R;
+tmp_reaction = rate_constant_array[149]*E_R_fbaA_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_tpiA = []
-tmp_reaction = rate_constant_array[146]*E_R_tpiA;
+tmp_reaction = rate_constant_array[150]*E_R_tpiA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_tpiA_R = []
-tmp_reaction = rate_constant_array[147]*E_R_tpiA_R;
+tmp_reaction = rate_constant_array[151]*E_R_tpiA_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gapA = []
-tmp_reaction = rate_constant_array[148]*E_R_gapA;
+tmp_reaction = rate_constant_array[152]*E_R_gapA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gapA_R = []
-tmp_reaction = rate_constant_array[149]*E_R_gapA_R;
+tmp_reaction = rate_constant_array[153]*E_R_gapA_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pgk = []
-tmp_reaction = rate_constant_array[150]*E_R_pgk;
+tmp_reaction = rate_constant_array[154]*E_R_pgk;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pgk_R = []
-tmp_reaction = rate_constant_array[151]*E_R_pgk_R;
+tmp_reaction = rate_constant_array[155]*E_R_pgk_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gpm = []
-tmp_reaction = rate_constant_array[152]*E_R_gpm;
+tmp_reaction = rate_constant_array[156]*E_R_gpm;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gpm_R = []
-tmp_reaction = rate_constant_array[153]*E_R_gpm_R;
+tmp_reaction = rate_constant_array[157]*E_R_gpm_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_eno = []
-tmp_reaction = rate_constant_array[154]*E_R_eno;
+tmp_reaction = rate_constant_array[158]*E_R_eno;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_eno_R = []
-tmp_reaction = rate_constant_array[155]*E_R_eno_R;
+tmp_reaction = rate_constant_array[159]*E_R_eno_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pyk = []
-tmp_reaction = rate_constant_array[156]*E_R_pyk;
+tmp_reaction = rate_constant_array[160]*E_R_pyk;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pck = []
-tmp_reaction = rate_constant_array[157]*E_R_pck;
+tmp_reaction = rate_constant_array[161]*E_R_pck;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ppc = []
-tmp_reaction = rate_constant_array[158]*E_R_ppc;
+tmp_reaction = rate_constant_array[162]*E_R_ppc;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pdh = []
-tmp_reaction = rate_constant_array[159]*E_R_pdh;
+tmp_reaction = rate_constant_array[163]*E_R_pdh;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pps = []
-tmp_reaction = rate_constant_array[160]*E_R_pps;
+tmp_reaction = rate_constant_array[164]*E_R_pps;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_zwf = []
-tmp_reaction = rate_constant_array[161]*E_R_zwf;
+tmp_reaction = rate_constant_array[165]*E_R_zwf;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_zwf_R = []
-tmp_reaction = rate_constant_array[162]*E_R_zwf_R;
+tmp_reaction = rate_constant_array[166]*E_R_zwf_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pgl = []
-tmp_reaction = rate_constant_array[163]*E_R_pgl;
+tmp_reaction = rate_constant_array[167]*E_R_pgl;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gnd = []
-tmp_reaction = rate_constant_array[164]*E_R_gnd;
+tmp_reaction = rate_constant_array[168]*E_R_gnd;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_rpe = []
-tmp_reaction = rate_constant_array[165]*E_R_rpe;
+tmp_reaction = rate_constant_array[169]*E_R_rpe;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_rpe_R = []
-tmp_reaction = rate_constant_array[166]*E_R_rpe_R;
+tmp_reaction = rate_constant_array[170]*E_R_rpe_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_rpi = []
-tmp_reaction = rate_constant_array[167]*E_R_rpi;
+tmp_reaction = rate_constant_array[171]*E_R_rpi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_rpi_R = []
-tmp_reaction = rate_constant_array[168]*E_R_rpi_R;
+tmp_reaction = rate_constant_array[172]*E_R_rpi_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_talAB = []
-tmp_reaction = rate_constant_array[169]*E_R_talAB;
+tmp_reaction = rate_constant_array[173]*E_R_talAB;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_talAB_R = []
-tmp_reaction = rate_constant_array[170]*E_R_talAB_R;
+tmp_reaction = rate_constant_array[174]*E_R_talAB_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_tkt1 = []
-tmp_reaction = rate_constant_array[171]*E_R_tkt1;
+tmp_reaction = rate_constant_array[175]*E_R_tkt1;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_tkt1_R = []
-tmp_reaction = rate_constant_array[172]*E_R_tkt1_R;
+tmp_reaction = rate_constant_array[176]*E_R_tkt1_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_tkt2 = []
-tmp_reaction = rate_constant_array[173]*E_R_tkt2;
+tmp_reaction = rate_constant_array[177]*E_R_tkt2;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_tkt2_R = []
-tmp_reaction = rate_constant_array[174]*E_R_tkt2_R;
+tmp_reaction = rate_constant_array[178]*E_R_tkt2_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_edd = []
-tmp_reaction = rate_constant_array[175]*E_R_edd;
+tmp_reaction = rate_constant_array[179]*E_R_edd;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_eda = []
-tmp_reaction = rate_constant_array[176]*E_R_eda;
+tmp_reaction = rate_constant_array[180]*E_R_eda;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gltA = []
-tmp_reaction = rate_constant_array[177]*E_R_gltA;
+tmp_reaction = rate_constant_array[181]*E_R_gltA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_acn = []
-tmp_reaction = rate_constant_array[178]*E_R_acn;
+tmp_reaction = rate_constant_array[182]*E_R_acn;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_acn_R = []
-tmp_reaction = rate_constant_array[179]*E_R_acn_R;
+tmp_reaction = rate_constant_array[183]*E_R_acn_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_icd = []
-tmp_reaction = rate_constant_array[180]*E_R_icd;
+tmp_reaction = rate_constant_array[184]*E_R_icd;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_icd_R = []
-tmp_reaction = rate_constant_array[181]*E_R_icd_R;
+tmp_reaction = rate_constant_array[185]*E_R_icd_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_sucAB = []
-tmp_reaction = rate_constant_array[182]*E_R_sucAB;
+tmp_reaction = rate_constant_array[186]*E_R_sucAB;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_sucCD = []
-tmp_reaction = rate_constant_array[183]*E_R_sucCD;
+tmp_reaction = rate_constant_array[187]*E_R_sucCD;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_sucCD_R = []
-tmp_reaction = rate_constant_array[184]*E_R_sucCD_R;
+tmp_reaction = rate_constant_array[188]*E_R_sucCD_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_sdh = []
-tmp_reaction = rate_constant_array[185]*E_R_sdh;
+tmp_reaction = rate_constant_array[189]*E_R_sdh;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_frd = []
-tmp_reaction = rate_constant_array[186]*E_R_frd;
+tmp_reaction = rate_constant_array[190]*E_R_frd;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_fum = []
-tmp_reaction = rate_constant_array[187]*E_R_fum;
+tmp_reaction = rate_constant_array[191]*E_R_fum;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_fum_R = []
-tmp_reaction = rate_constant_array[188]*E_R_fum_R;
+tmp_reaction = rate_constant_array[192]*E_R_fum_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_mdh = []
-tmp_reaction = rate_constant_array[189]*E_R_mdh;
+tmp_reaction = rate_constant_array[193]*E_R_mdh;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_mdh_R = []
-tmp_reaction = rate_constant_array[190]*E_R_mdh_R;
+tmp_reaction = rate_constant_array[194]*E_R_mdh_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_aceA = []
-tmp_reaction = rate_constant_array[191]*E_R_aceA;
+tmp_reaction = rate_constant_array[195]*E_R_aceA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_aceB = []
-tmp_reaction = rate_constant_array[192]*E_R_aceB;
+tmp_reaction = rate_constant_array[196]*E_R_aceB;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_maeA = []
-tmp_reaction = rate_constant_array[193]*E_R_maeA;
+tmp_reaction = rate_constant_array[197]*E_R_maeA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_maeB = []
-tmp_reaction = rate_constant_array[194]*E_R_maeB;
+tmp_reaction = rate_constant_array[198]*E_R_maeB;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pta = []
-tmp_reaction = rate_constant_array[195]*E_R_pta;
+tmp_reaction = rate_constant_array[199]*E_R_pta;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pta_R = []
-tmp_reaction = rate_constant_array[196]*E_R_pta_R;
+tmp_reaction = rate_constant_array[200]*E_R_pta_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ackA = []
-tmp_reaction = rate_constant_array[197]*E_R_ackA;
+tmp_reaction = rate_constant_array[201]*E_R_ackA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ackA_R = []
-tmp_reaction = rate_constant_array[198]*E_R_ackA_R;
+tmp_reaction = rate_constant_array[202]*E_R_ackA_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_acs = []
-tmp_reaction = rate_constant_array[199]*E_R_acs;
+tmp_reaction = rate_constant_array[203]*E_R_acs;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_adhE = []
-tmp_reaction = rate_constant_array[200]*E_R_adhE;
+tmp_reaction = rate_constant_array[204]*E_R_adhE;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_adhE_R = []
-tmp_reaction = rate_constant_array[201]*E_R_adhE_R;
+tmp_reaction = rate_constant_array[205]*E_R_adhE_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ldh_f = []
-tmp_reaction = rate_constant_array[202]*E_R_ldh_f;
+tmp_reaction = rate_constant_array[206]*E_R_ldh_f;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ldh_r = []
-tmp_reaction = rate_constant_array[203]*E_R_ldh_r;
+tmp_reaction = rate_constant_array[207]*E_R_ldh_r;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pflAB = []
-tmp_reaction = rate_constant_array[204]*E_R_pflAB;
+tmp_reaction = rate_constant_array[208]*E_R_pflAB;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_cyd = []
-tmp_reaction = rate_constant_array[205]*E_R_cyd;
+tmp_reaction = rate_constant_array[209]*E_R_cyd;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_app = []
-tmp_reaction = rate_constant_array[206]*E_R_app;
+tmp_reaction = rate_constant_array[210]*E_R_app;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_atp = []
-tmp_reaction = rate_constant_array[207]*E_R_atp;
+tmp_reaction = rate_constant_array[211]*E_R_atp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_nuo = []
-tmp_reaction = rate_constant_array[208]*E_R_nuo;
+tmp_reaction = rate_constant_array[212]*E_R_nuo;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pnt1 = []
-tmp_reaction = rate_constant_array[209]*E_R_pnt1;
+tmp_reaction = rate_constant_array[213]*E_R_pnt1;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pnt2 = []
-tmp_reaction = rate_constant_array[210]*E_R_pnt2;
+tmp_reaction = rate_constant_array[214]*E_R_pnt2;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ndh1 = []
-tmp_reaction = rate_constant_array[211]*E_R_ndh1;
+tmp_reaction = rate_constant_array[215]*E_R_ndh1;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ndh2 = []
-tmp_reaction = rate_constant_array[212]*E_R_ndh2;
+tmp_reaction = rate_constant_array[216]*E_R_ndh2;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_hack1 = []
-tmp_reaction = rate_constant_array[213]*E_R_hack1;
+tmp_reaction = rate_constant_array[217]*E_R_hack1;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ppk = []
-tmp_reaction = rate_constant_array[214]*E_R_ppk;
+tmp_reaction = rate_constant_array[218]*E_R_ppk;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ppa = []
-tmp_reaction = rate_constant_array[215]*E_R_ppa;
+tmp_reaction = rate_constant_array[219]*E_R_ppa;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_chor = []
-tmp_reaction = rate_constant_array[216]*E_R_chor;
+tmp_reaction = rate_constant_array[220]*E_R_chor;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gar = []
-tmp_reaction = rate_constant_array[217]*E_R_gar;
+tmp_reaction = rate_constant_array[221]*E_R_gar;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_air = []
-tmp_reaction = rate_constant_array[218]*E_R_air;
+tmp_reaction = rate_constant_array[222]*E_R_air;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_aicar = []
-tmp_reaction = rate_constant_array[219]*E_R_aicar;
+tmp_reaction = rate_constant_array[223]*E_R_aicar;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_imp = []
-tmp_reaction = rate_constant_array[220]*E_R_imp;
+tmp_reaction = rate_constant_array[224]*E_R_imp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gmp = []
-tmp_reaction = rate_constant_array[221]*E_R_gmp;
+tmp_reaction = rate_constant_array[225]*E_R_gmp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gdp = []
-tmp_reaction = rate_constant_array[222]*E_R_gdp;
+tmp_reaction = rate_constant_array[226]*E_R_gdp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gtp = []
-tmp_reaction = rate_constant_array[223]*E_R_gtp;
+tmp_reaction = rate_constant_array[227]*E_R_gtp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_amp = []
-tmp_reaction = rate_constant_array[224]*E_R_amp;
+tmp_reaction = rate_constant_array[228]*E_R_amp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_adk = []
-tmp_reaction = rate_constant_array[225]*E_R_adk;
+tmp_reaction = rate_constant_array[229]*E_R_adk;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_adk_R = []
-tmp_reaction = rate_constant_array[226]*E_R_adk_R;
+tmp_reaction = rate_constant_array[230]*E_R_adk_R;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ump = []
-tmp_reaction = rate_constant_array[227]*E_R_ump;
+tmp_reaction = rate_constant_array[231]*E_R_ump;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_udp = []
-tmp_reaction = rate_constant_array[228]*E_R_udp;
+tmp_reaction = rate_constant_array[232]*E_R_udp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_utp = []
-tmp_reaction = rate_constant_array[229]*E_R_utp;
+tmp_reaction = rate_constant_array[233]*E_R_utp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ctp = []
-tmp_reaction = rate_constant_array[230]*E_R_ctp;
+tmp_reaction = rate_constant_array[234]*E_R_ctp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_cdp = []
-tmp_reaction = rate_constant_array[231]*E_R_cdp;
+tmp_reaction = rate_constant_array[235]*E_R_cdp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_cmp = []
-tmp_reaction = rate_constant_array[232]*E_R_cmp;
+tmp_reaction = rate_constant_array[236]*E_R_cmp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_alaAC = []
-tmp_reaction = rate_constant_array[233]*E_R_alaAC;
+tmp_reaction = rate_constant_array[237]*E_R_alaAC;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_arg = []
-tmp_reaction = rate_constant_array[234]*E_R_arg;
+tmp_reaction = rate_constant_array[238]*E_R_arg;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_aspC = []
-tmp_reaction = rate_constant_array[235]*E_R_aspC;
+tmp_reaction = rate_constant_array[239]*E_R_aspC;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_asnB = []
-tmp_reaction = rate_constant_array[236]*E_R_asnB;
+tmp_reaction = rate_constant_array[240]*E_R_asnB;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_asnA = []
-tmp_reaction = rate_constant_array[237]*E_R_asnA;
+tmp_reaction = rate_constant_array[241]*E_R_asnA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_cysEMK = []
-tmp_reaction = rate_constant_array[238]*E_R_cysEMK;
+tmp_reaction = rate_constant_array[242]*E_R_cysEMK;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gltBD = []
-tmp_reaction = rate_constant_array[239]*E_R_gltBD;
+tmp_reaction = rate_constant_array[243]*E_R_gltBD;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gdhA = []
-tmp_reaction = rate_constant_array[240]*E_R_gdhA;
+tmp_reaction = rate_constant_array[244]*E_R_gdhA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_glnA = []
-tmp_reaction = rate_constant_array[241]*E_R_glnA;
+tmp_reaction = rate_constant_array[245]*E_R_glnA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_glyA = []
-tmp_reaction = rate_constant_array[242]*E_R_glyA;
+tmp_reaction = rate_constant_array[246]*E_R_glyA;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_his = []
-tmp_reaction = rate_constant_array[243]*E_R_his;
+tmp_reaction = rate_constant_array[247]*E_R_his;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ile = []
-tmp_reaction = rate_constant_array[244]*E_R_ile;
+tmp_reaction = rate_constant_array[248]*E_R_ile;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_leu = []
-tmp_reaction = rate_constant_array[245]*E_R_leu;
+tmp_reaction = rate_constant_array[249]*E_R_leu;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_lys = []
-tmp_reaction = rate_constant_array[246]*E_R_lys;
+tmp_reaction = rate_constant_array[250]*E_R_lys;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_met = []
-tmp_reaction = rate_constant_array[247]*E_R_met;
+tmp_reaction = rate_constant_array[251]*E_R_met;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_phe = []
-tmp_reaction = rate_constant_array[248]*E_R_phe;
+tmp_reaction = rate_constant_array[252]*E_R_phe;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_pro = []
-tmp_reaction = rate_constant_array[249]*E_R_pro;
+tmp_reaction = rate_constant_array[253]*E_R_pro;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_serABC = []
-tmp_reaction = rate_constant_array[250]*E_R_serABC;
+tmp_reaction = rate_constant_array[254]*E_R_serABC;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_thr = []
-tmp_reaction = rate_constant_array[251]*E_R_thr;
+tmp_reaction = rate_constant_array[255]*E_R_thr;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_trp = []
-tmp_reaction = rate_constant_array[252]*E_R_trp;
+tmp_reaction = rate_constant_array[256]*E_R_trp;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_tyr = []
-tmp_reaction = rate_constant_array[253]*E_R_tyr;
+tmp_reaction = rate_constant_array[257]*E_R_tyr;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_val = []
-tmp_reaction = rate_constant_array[254]*E_R_val;
+tmp_reaction = rate_constant_array[258]*E_R_val;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_Ex_1 = []
-tmp_reaction = rate_constant_array[255]*E_Ex_1;
+tmp_reaction = rate_constant_array[259]*E_Ex_1;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_Ex_2 = []
-tmp_reaction = rate_constant_array[256]*E_Ex_2;
+tmp_reaction = rate_constant_array[260]*E_Ex_2;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_Ex_3 = []
-tmp_reaction = rate_constant_array[257]*E_Ex_3;
+tmp_reaction = rate_constant_array[261]*E_Ex_3;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_Ex_4 = []
-tmp_reaction = rate_constant_array[258]*E_Ex_4;
+tmp_reaction = rate_constant_array[262]*E_Ex_4;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_Ex_5 = []
-tmp_reaction = rate_constant_array[259]*E_Ex_5;
+tmp_reaction = rate_constant_array[263]*E_Ex_5;
+push!(rate_vector,tmp_reaction);
+tmp_reaction = 0;
+
+# Degradation: E_ATP_deg = []
+tmp_reaction = rate_constant_array[264]*E_ATP_deg;
+push!(rate_vector,tmp_reaction);
+tmp_reaction = 0;
+
+# Degradation: E_GTP_deg = []
+tmp_reaction = rate_constant_array[265]*E_GTP_deg;
+push!(rate_vector,tmp_reaction);
+tmp_reaction = 0;
+
+# Degradation: E_CTP_deg = []
+tmp_reaction = rate_constant_array[266]*E_CTP_deg;
+push!(rate_vector,tmp_reaction);
+tmp_reaction = 0;
+
+# Degradation: E_UTP_deg = []
+tmp_reaction = rate_constant_array[267]*E_UTP_deg;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_CAT = []
-tmp_reaction = rate_constant_array[260]*E_R_CAT;
+tmp_reaction = rate_constant_array[268]*E_R_CAT;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_amp_ppi = []
-tmp_reaction = rate_constant_array[261]*E_R_amp_ppi;
+tmp_reaction = rate_constant_array[269]*E_R_amp_ppi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_amp_pi = []
-tmp_reaction = rate_constant_array[262]*E_R_amp_pi;
+tmp_reaction = rate_constant_array[270]*E_R_amp_pi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gmp_ppi = []
-tmp_reaction = rate_constant_array[263]*E_R_gmp_ppi;
+tmp_reaction = rate_constant_array[271]*E_R_gmp_ppi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_gmp_pi = []
-tmp_reaction = rate_constant_array[264]*E_R_gmp_pi;
+tmp_reaction = rate_constant_array[272]*E_R_gmp_pi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_cmp_ppi = []
-tmp_reaction = rate_constant_array[265]*E_R_cmp_ppi;
+tmp_reaction = rate_constant_array[273]*E_R_cmp_ppi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_cmp_pi = []
-tmp_reaction = rate_constant_array[266]*E_R_cmp_pi;
+tmp_reaction = rate_constant_array[274]*E_R_cmp_pi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ump_ppi = []
-tmp_reaction = rate_constant_array[267]*E_R_ump_ppi;
+tmp_reaction = rate_constant_array[275]*E_R_ump_ppi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 
 # Degradation: E_R_ump_pi = []
-tmp_reaction = rate_constant_array[268]*E_R_ump_pi;
+tmp_reaction = rate_constant_array[276]*E_R_ump_pi;
 push!(rate_vector,tmp_reaction);
 tmp_reaction = 0;
 

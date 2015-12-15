@@ -298,6 +298,15 @@ Ex_4,[],M_nh4_c,0,inf;
 Ex_5,[],M_so4_c,0,inf;
 
 // ===============================================
+// XTP DEGRADATION
+// ===============================================
+
+ATP_deg,M_atp_c,[],0,inf;
+GTP_deg,M_gtp_c,[],0,inf;
+CTP_deg,M_ctp_c,[],0,inf;
+UTP_deg,M_utp_c,[],0,inf;
+
+// ===============================================
 // CAT SYNTHESIS
 // ===============================================
 R_CAT,15*M_ala_L_c+10*M_asn_L_c+5*M_arg_L_c+12*M_asp_L_c+12*M_glu_L_c+13*M_gln_L_c+10*M_gly_L_c+12*M_his_L_c+9*M_ile_L_c+13*M_leu_L_c+12*M_lys_L_c+9*M_met_L_c+20*M_phe_L_c+7*M_pro_L_c+10*M_ser_L_c+13*M_thr_L_c+5*M_trp_L_c+11*M_tyr_L_c+16*M_val_L_c+219*M_atp_c+438*M_gtp_c,219*M_amp_c+438*M_gdp_c+219*M_ppi_c+438*M_pi_c+CAT,0,inf;
